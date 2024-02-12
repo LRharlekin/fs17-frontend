@@ -1,46 +1,48 @@
-# Getting Started with Create React App
+# Frontend project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository for the Frontend project
 
-## Available Scripts
+## 2 topics
 
-In the project directory, you can run:
+backend mindful
 
-### `npm start`
+- library
+- e-commerce
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Basic requirements
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The Front end project must use TypeScript and Redux toolkit.
 
-### `npm test`
+1. Use the API endpoint `https://fakeapi.platzi.com/` to create an e-commerce website.
+2. Create at lease 4 pages (can be more if you want): Page for all products, product page, profile page (only available if user logins), and cart page (cart page could be a page or a modal)
+3. Create Redux store for following features:
+   - product reducer: get all products, find a single products, filter products by categories, sort products by price. Create, update and delete a product (enable update & delete features only for admin of the webapp)
+   - user reducer: register and login
+   - cart reducer: add product to cart, remove products, update products's quantity in cart
+4. When adding routers to your application, set certain routes to be private. For example, route to user profile page should not be accessible if user has not logged in.
+5. Styling: responsive
+6. Implement unit testing for the reducers
+7. **Deploy** the application and rewrite README file.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Additional features:
 
-### `npm run build`
+- context API to switch theme
+- use pagination when fetching/displaying all the products
+- implement performance optimization where applicable
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Grading (1-5)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1: Late submission or not complete basic requirements
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2: Basic requirement + Presentation
 
-### `npm run eject`
+3: Folder structure + follow convention(naming convention ,loading, error) + some additional features
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+4: All additional features + reusable + custom hook
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5: UI-UX (for example: send alert when user add same product) + styling (animation, scroll to top) + advanced feature (google log in)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Deadline
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Presentation: 7/3 and 8/3/ 2024
+- Submitting Front-end project 10am 8/3/2024
