@@ -7,7 +7,9 @@ This repository for the Frontend project
 - library
 - e-commerce
 
-## Basic requirements
+## Requirements
+
+### Basic requirements
 
 The Front end project must use TypeScript and Redux toolkit.
 
@@ -22,7 +24,7 @@ The Front end project must use TypeScript and Redux toolkit.
 6. Implement unit testing for the reducers
 7. **Deploy** the application and rewrite README file.
 
-Additional features:
+### Additional features:
 
 - Use Context API to switch theme
 - Use pagination when fetching/displaying all the products
