@@ -25,9 +25,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -r https://github.com/LRharlekin/fs17-frontend.git"
   },
-  
-
-  },
   "eslintConfig": {
     "extends": [
       "react-app",
