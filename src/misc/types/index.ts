@@ -1,6 +1,6 @@
-import /* named imports */ ".";
+import type { CategoryType } from "./CategoryType";
+import type { ProductType } from "./ProductType";
+import type { UserRegisterType } from "./UserRegisterType";
+import type { UserType } from "./UserType";
 
-const types = {};
-
-export // named types;
- {};
+export type { CategoryType, ProductType, UserRegisterType, UserType };
