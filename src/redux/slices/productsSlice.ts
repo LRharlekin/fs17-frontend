@@ -23,9 +23,9 @@ const initialState: InitialState = {
 // sortProductsByPrice
 
 // PROTECTED role === "admin"
-// createProduct
-// updateProduct
-// deleteProduct
+// productAdded
+// productUpdated
+// productDeleted
 
 const productsSlice = createSlice({
   name: "products",
@@ -33,6 +33,9 @@ const productsSlice = createSlice({
   reducers: {
     setProducts: (state, action: PayloadAction<Array<ProductType>>) => {
       state.products = action.payload;
+    },
+    productAdded: (state, action: PayloadAction<ProductType>) => {
+      state.products.push(action.payload);
     },
     // getAllProducts: (state, action: PayloadAction<Array<ProductType>>) => {
     //   state.products = action.payload;

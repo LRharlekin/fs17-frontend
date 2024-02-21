@@ -8,3 +8,13 @@ export type ProductType = {
   category: CategoryType;
   images: Array<string>;
 };
+
+export type ProductToAddType = Omit<ProductType, "id" | "category"> & {
+  categoryId: CategoryType["id"];
+};
+
+export type ProductToDeleteType = {
+  id: number;
+};
+
+export type ProductToUpdateBodyType = Partial<ProductToAddType>;
