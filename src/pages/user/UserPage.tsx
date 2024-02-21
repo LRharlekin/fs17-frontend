@@ -1,8 +1,10 @@
+import Container from "../../components/Container";
+
 const UserPage = () => {
   return (
-    <div>
+    <Container component="main">
       <h1>User</h1>
-    </div>
+    </Container>
   );
 };
 

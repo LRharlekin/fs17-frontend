@@ -7,9 +7,7 @@ const Layout = () => {
   return (
     <Fragment>
       <NavBar />
-      <main>
-        <Outlet />
-      </main>
+      <Outlet />
       <Footer />
     </Fragment>
   );

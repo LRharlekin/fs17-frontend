@@ -1,22 +1,29 @@
 import { configureStore } from "@reduxjs/toolkit";
-
-// import redux hooks
-import { useAppDispatch, useAppSelector } from "../hooks";
+import { setupListeners } from "@reduxjs/toolkit/query";
 
 // import reducers
-import productsReducer from "./slices/productsSlice";
+// import productsReducer from "./slices/productsSlice";
+import usersReducer from "./slices/usersSlice";
 // import services
-import productQueries from "./services/productQueries";
+import productsApi from "./services/productsApi";
 
 const store = configureStore({
   reducer: {
-    // users
+    users: usersReducer,
     // products
-    products: productsReducer,
+    // products: productsReducer,
     // cart
-    [productQueries.reducerPath]: productQueries.reducer,
+    [productsApi.reducerPath]: productsApi.reducer,
   },
+  // Adding the api middleware enables caching, invalidation, polling,
+  // and other useful features of RTK Query.
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(productsApi.middleware),
 });
+
+// required for refetchOnFocus/refetchOnReconnect behaviors
+// see `setupListeners` docs - takes an optional callback as the 2nd arg for customization
+setupListeners(store.dispatch);
 
 export default store;
 

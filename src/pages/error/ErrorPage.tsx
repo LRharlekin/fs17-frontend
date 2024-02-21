@@ -1,9 +1,11 @@
+import Container from "../../components/Container";
+
 const ErrorPage = () => {
   return (
-    <div>
+    <Container component="main">
       <h1>404</h1>
       <p>Page not found</p>
-    </div>
+    </Container>
   );
 };
 

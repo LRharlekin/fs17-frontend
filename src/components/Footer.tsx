@@ -1,5 +1,11 @@
+import Container from "./Container";
+
 const Footer = () => {
-  return <footer>Footer</footer>;
+  return (
+    <footer>
+      <Container>Footer</Container>
+    </footer>
+  );
 };
 
 export default Footer;

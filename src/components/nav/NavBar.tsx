@@ -1,6 +1,7 @@
 import { useState, Fragment } from "react";
 import AppBar from "@mui/material/AppBar";
-import Container from "@mui/material/Container";
+
+import Container from "../Container";
 
 const NavBar = () => {
   const [activeLink, setActiveLink] = useState("home");
@@ -8,15 +9,15 @@ const NavBar = () => {
   return (
     <Fragment>
       <AppBar position="static">
-        <Container maxWidth="xl">
+        <Container>
           {/* <NavMenu> */}
-          <div className="NavMenu">
+          <menu className="NavMenu">
             {/* <NavMenu.NavLink> */}
             <div>Link 1</div>
             <div>Link 2</div>
             <div>Link 3</div>
             <div>Link 4</div>
-          </div>
+          </menu>
           <div>LOGO 👗</div>
           {/* <NavToolBar> */}
           <div className="NavToolBar">

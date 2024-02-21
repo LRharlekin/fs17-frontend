@@ -1,8 +1,10 @@
+import Container from "../../components/Container";
+
 const CartPage = () => {
   return (
-    <div>
+    <Container component="main">
       <h1>Cart</h1>
-    </div>
+    </Container>
   );
 };
 

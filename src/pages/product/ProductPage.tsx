@@ -1,11 +1,11 @@
-import ProductFeed from "../../components/ProductFeed";
+import Container from "../../components/Container";
 
 const ProductPage = () => {
   return (
-    <div>
+    <Container component="main">
       <h1>Product</h1>
-      <ProductFeed />
-    </div>
+      // product
+    </Container>
   );
 };
 

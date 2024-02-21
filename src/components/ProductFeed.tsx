@@ -9,20 +9,23 @@ import ProductCard from "./ProductCard";
 import CardMedia from "./CardMedia";
 import CardTitle from "./CardTitle";
 import CardDescription from "./CardDescription";
+import AddToCartButton from "./AddToCartButton";
+
+type Props = {
+  feedData: Array<ProductType>;
+};
 
 const ActionsComponent = [
-  <Button size="small" color="primary">
+  <Button variant="contained" size="small" color="primary">
     More Details
   </Button>,
-  <Button size="small" color="primary">
-    Add to Cart
-  </Button>,
+  <AddToCartButton />,
 ];
 
-const ProductFeed = () => {
-  const products = useAppSelector((state) => state.products.products);
+const ProductFeed = ({ feedData }: Props) => {
+  // const products = useAppSelector((state) => state.products);
 
-  const renderedProducts = products.map((product: ProductType) => {
+  const renderedProducts = feedData.map((product: ProductType) => {
     return (
       <ProductCard
         media={
