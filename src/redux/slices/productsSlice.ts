@@ -1,6 +1,12 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 
-import { ProductType } from "../../misc/types";
+import {
+  ProductType,
+  ProductToAddType,
+  ProductToDeleteType,
+  ProductToUpdateType,
+  ProductToUpdateBodyType,
+} from "../../misc/types";
 
 /* dummy products data DELETE LATER */
 // import { dummyProducts as data } from "./dummyProducts";
@@ -47,10 +53,10 @@ const productsSlice = createSlice({
 // export const selectAllProducts = (state: InitialState) => state.products;
 // actions: use in components
 // const { getAllProducts } = productsSlice.actions;
-const { setProducts } = productsSlice.actions;
+const { setProducts, productAdded } = productsSlice.actions;
 // reducer: pass into store config
 const productsReducer = productsSlice.reducer;
 
 // export { getAllProducts };
-export { setProducts };
+export { setProducts, productAdded };
 export default productsReducer;

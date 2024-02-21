@@ -13,8 +13,8 @@ export type ProductToAddType = Omit<ProductType, "id" | "category"> & {
   categoryId: CategoryType["id"];
 };
 
-export type ProductToDeleteType = {
-  id: number;
-};
+export type ProductToDeleteType = Pick<ProductType, "id">;
+
+export type ProductToUpdateType = Pick<ProductType, "id">;
 
 export type ProductToUpdateBodyType = Partial<ProductToAddType>;
