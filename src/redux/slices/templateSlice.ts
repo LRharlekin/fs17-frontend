@@ -4,7 +4,7 @@ export default templateSlice;
 /*
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 
-import { NeededType } from "../../types";
+import type { NeededType } from "../../types";
 
 interface TemplateState {
 	counterValue: number;

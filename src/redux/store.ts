@@ -4,12 +4,14 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 // import reducers
 // import productsReducer from "./slices/productsSlice";
 import usersReducer from "./slices/usersSlice";
+import authReducer from "./slices/authSlice";
 // import services
 import productsApi from "./services/productsApi";
 
 const store = configureStore({
   reducer: {
     users: usersReducer,
+    auth: authReducer,
     // products
     // products: productsReducer,
     // cart

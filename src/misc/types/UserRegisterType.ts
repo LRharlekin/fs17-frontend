@@ -1,6 +1,6 @@
 export type UserRegisterType = {
-  name: string;
-  email: string;
-  password: string;
-  avatar: string;
+  name: string | null;
+  email: string | null;
+  password: string | null;
+  token: string | null;
 };
