@@ -22,11 +22,12 @@ const TabsNav = ({ tabs }: Props) => {
   return (
     <Box sx={{ width: "100%" }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <TabsContainer value={value} onChange={handleChange} centered>
+        <TabsContainer value={value} onChange={handleChange}>
           {tabs.map((tab, index) => {
             return (
               <TabItem
                 id={`tab-item-${index}`}
+                key={`tab-item-${index}`}
                 label={tab.title}
                 icon={tab.icon}
               />
@@ -36,7 +37,7 @@ const TabsNav = ({ tabs }: Props) => {
       </Box>
       {tabs.map((tab, index) => {
         return (
-          <TabPanel value={value} index={index}>
+          <TabPanel key={`tab-panel-${index}`} value={value} index={index}>
             {tab.content}
           </TabPanel>
         );
