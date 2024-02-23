@@ -180,12 +180,7 @@ const AddProductForm = () => {
         {/* images: string[]; */}
         <Typography variant="body2">Images</Typography>
         <ImageUploadField />
-        <Button
-          type="submit"
-          variant="contained"
-          // color="warning"
-          disabled={isSubmitting}
-        >
+        <Button type="submit" variant="contained" disabled={isSubmitting}>
           {isSubmitting ? "Sending New Product Data..." : "Save New Product"}
         </Button>
         {/* Server-side error / success alert */}

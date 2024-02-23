@@ -1,13 +1,10 @@
 import Container from "../../components/Container";
+import LoginForm from "../../components/auth/LoginForm";
 
 const LoginPage = () => {
   return (
     <Container component="main">
-      <h1>Enter</h1>
-      <ul>
-        <li>Login</li>
-        <li>Register</li>
-      </ul>
+      <LoginForm />
     </Container>
   );
 };

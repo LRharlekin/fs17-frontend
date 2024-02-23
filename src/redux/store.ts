@@ -20,7 +20,7 @@ const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
   },
   /* DELETE IN PRODUCTION */
-  devTools: true,
+  // devTools: true,
   // Adding the api middleware enables caching, invalidation, polling,
   // and other useful features of RTK Query.
   middleware: (getDefaultMiddleware) =>

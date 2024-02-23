@@ -2,12 +2,6 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 
 import type { UserRegisterType } from "../../misc/types";
 import type { AppState } from "../store";
-// type InitialStateType = {
-//   name: string;
-//   email: string;
-//   password: string;
-//   token: string;
-// };
 
 const initialState: UserRegisterType = {
   name: null,
@@ -30,6 +24,7 @@ const authSlice = createSlice({
       const { email, token, refreshToken } = action.payload;
       state.email = email;
       state.token = token;
+      state.refreshToken = refreshToken;
     },
     logout: (state) => {
       state.email = null;
