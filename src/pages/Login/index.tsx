@@ -1,6 +1,6 @@
 import Container from "../../components/Container";
 
-const EnterPage = () => {
+const LoginPage = () => {
   return (
     <Container component="main">
       <h1>Enter</h1>
@@ -12,4 +12,4 @@ const EnterPage = () => {
   );
 };
 
-export default EnterPage;
+export default LoginPage;

@@ -7,6 +7,7 @@ import usersReducer from "./slices/usersSlice";
 import authReducer from "./slices/authSlice";
 // import services
 import productsApi from "./services/productsApi";
+import { authApi } from "./services/authApi";
 
 const store = configureStore({
   reducer: {
@@ -16,11 +17,16 @@ const store = configureStore({
     // products: productsReducer,
     // cart
     [productsApi.reducerPath]: productsApi.reducer,
+    [authApi.reducerPath]: authApi.reducer,
   },
+  /* DELETE IN PRODUCTION */
+  devTools: true,
   // Adding the api middleware enables caching, invalidation, polling,
   // and other useful features of RTK Query.
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(productsApi.middleware),
+    getDefaultMiddleware()
+      .concat(productsApi.middleware)
+      .concat(authApi.middleware),
 });
 
 // required for refetchOnFocus/refetchOnReconnect behaviors

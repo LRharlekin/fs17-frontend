@@ -3,4 +3,5 @@ export type UserRegisterType = {
   email: string | null;
   password: string | null;
   token: string | null;
+  refreshToken: string | null;
 };

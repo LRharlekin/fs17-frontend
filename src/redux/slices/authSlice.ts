@@ -14,20 +14,27 @@ const initialState: UserRegisterType = {
   email: null,
   password: null,
   token: null,
+  refreshToken: null,
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setCredentials: (state, action: PayloadAction<UserRegisterType>) => {
-      const { name, token: accessToken } = action.payload;
-      state.name = name;
-      state.token = accessToken;
+    setCredentials: (
+      state,
+      action: PayloadAction<
+        Pick<UserRegisterType, "email" | "token" | "refreshToken">
+      >
+    ) => {
+      const { email, token, refreshToken } = action.payload;
+      state.email = email;
+      state.token = token;
     },
     logout: (state) => {
-      state.name = null;
+      state.email = null;
       state.token = null;
+      state.refreshToken = null;
     },
   },
 });
