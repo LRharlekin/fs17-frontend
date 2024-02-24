@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import type { UserRegisterType } from "../../misc/types";
 import type { AppState } from "../store";
@@ -40,3 +40,5 @@ export default authSlice.reducer;
 
 export const selectCurrentUser = (state: AppState) => state.auth.name;
 export const selectCurrentToken = (state: AppState) => state.auth.token;
+export const selectCurrentRefreshToken = (state: AppState) =>
+  state.auth.refreshToken;
