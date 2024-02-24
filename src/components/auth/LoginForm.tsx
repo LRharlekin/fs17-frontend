@@ -16,6 +16,7 @@ import {
   Typography,
 } from "@mui/material";
 
+import type { AuthTokenResponse } from "../../misc/types";
 // import FormInputPassword from "./FormInputPassword";
 
 type LoginFormFields = {
@@ -26,9 +27,9 @@ type LoginFormFields = {
 const LoginForm = () => {
   /* component setup start */
   const [alertOpen, setAlertOpen] = useState(false);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const [login, { isLoading }] = useLoginMutation();
+  const [login, { isLoading, error: loginError }] = useLoginMutation();
   const dispatch = useAppDispatch();
   /* component setup end */
 
@@ -48,26 +49,33 @@ const LoginForm = () => {
     reset,
   } = form;
 
-  const onSubmit: SubmitHandler<LoginFormFields> = async (data) => {
+  const onSubmit: SubmitHandler<LoginFormFields> = async ({
+    email,
+    password,
+  }) => {
     try {
-      // make POST request using login mutation, will return tokens
-      const userData = await login({}).unwrap();
-    } catch (error) {}
-
-    /* try {
-      // Simulate async form submission (POST request)
-      await new Promise((resolve) => setTimeout(resolve, 2000));
       // Simulate server-side error
-      throw new Error();
-      console.log("Form submitted");
-      console.log(data);
-      setAlertOpen(true);
+      // throw new Error();
+
+      // POST request using login mutation, will return tokens
+      const userData: Awaited<Promise<AuthTokenResponse>> = await login({
+        email,
+        password,
+      }).unwrap();
+
+      const { access_token: token, refresh_token: refreshToken } = userData;
+
+      dispatch(setCredentials({ token, refreshToken, email }));
+
+      reset(); // reset form fields
+      navigate("/profile");
     } catch (error) {
+      console.error("Login failed. Please try again.");
       setError("root", {
         message: "Login failed. Please try again.",
       });
       setAlertOpen(true);
-    } */
+    }
   };
 
   useEffect(() => {

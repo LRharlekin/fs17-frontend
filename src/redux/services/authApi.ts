@@ -29,7 +29,7 @@ import { RemoveFromQueue } from "@mui/icons-material";
 const baseQuery = fetchBaseQuery({
   baseUrl: "https://api.escuelajs.co/api/v1",
   // credentials extends from Request() constructor, fetch API
-  credentials: "include", // set 'HttpOnly' and 'Secure' on cookies
+  // credentials: "include", // set 'HttpOnly' and 'Secure' on cookies
   // if present, inject auth headers on every request
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as AppState).auth.token;
