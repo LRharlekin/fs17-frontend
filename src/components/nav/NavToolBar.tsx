@@ -1,10 +1,23 @@
-import React, { Fragment as _F } from "react";
+import React from "react";
 
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import { IconButton, Toolbar, Tooltip } from "@mui/material";
+import { AccountCircle } from "@mui/icons-material";
 
 const NavToolBar = () => {
+  const navigate = useNavigate();
+
+  const handleAccountIconClick = (event: React.MouseEvent<HTMLElement>) => {
+    // if not logged in: redirect to login page
+    navigate("/login");
+    // if logged in: open user menu
+
+    setAnchorElUser(event.currentTarget);
+  };
+
   return (
-    <_F>
+    <Toolbar component="nav">
       {/* CountrySelect */}
       <select>
         {/* CountrySelect.Option */}
@@ -16,11 +29,18 @@ const NavToolBar = () => {
         <option value="es">Sweden (SEK)</option>
         <option value="es">Denmark (DKK)</option>
       </select>
-      <Link to="/login">👤 Login</Link>
+      <Tooltip title="Login">
+        <IconButton onClick={() => console.log("login")}>
+          {/* <IconButton onClick={() => console.log("login")}> */}
+          {/* navigate to login page */}
+          {/* <Link to="/login">👤</Link> */}
+          <AccountCircle />
+        </IconButton>
+      </Tooltip>
 
       <div>🔎 Search</div>
       <div>🛒 Cart</div>
-    </_F>
+    </Toolbar>
   );
 };
 

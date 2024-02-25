@@ -10,7 +10,7 @@ import type {
   ProductToUpdateType,
   ProductToUpdateBodyType,
 } from "./ProductType";
-import type { RouteType } from "./RouteType";
+
 import type { UserRegisterType } from "./UserRegisterType";
 import type { UserType } from "./UserType";
 
@@ -23,7 +23,6 @@ export type {
   ProductToDeleteType,
   ProductToUpdateType,
   ProductToUpdateBodyType,
-  RouteType,
   UserRegisterType,
   UserType,
 };

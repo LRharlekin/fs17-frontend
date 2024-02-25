@@ -1,23 +1,28 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import type { RouteType } from "../misc/types";
-
-import pagesData from "./pagesData";
+import { publicRoutes, protectedRoutes } from "./pagesData";
 
 import Layout from "./Layout";
 import ErrorPage from "./Error";
+import RequireAuth from "../components/auth/RequireAuth";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    /* loader() {
+      // always provide user data, if logged in
+      // return { user: fakeAuthProvider.username};
+    }, */
     element: <Layout />,
     errorElement: <ErrorPage />,
-    children: pagesData.map((page: RouteType) => {
-      return {
-        path: page.path,
-        element: page.element,
-      };
-    }),
+    children: [
+      ...publicRoutes,
+
+      {
+        element: <RequireAuth />,
+        children: [...protectedRoutes],
+      },
+    ],
   },
 ]);
 

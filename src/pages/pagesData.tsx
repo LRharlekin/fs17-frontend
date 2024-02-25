@@ -1,4 +1,4 @@
-import { RouteType } from "../misc/types";
+import type { RouteObject } from "react-router-dom";
 
 import HomePage from "./Home";
 import ManageProductsPage from "./ManageProducts";
@@ -7,37 +7,32 @@ import CartPage from "./Cart";
 import UserPage from "./User";
 import LoginPage from "./Login";
 
-const pagesData: RouteType[] = [
+export const publicRoutes: RouteObject[] = [
   {
-    path: "/",
+    index: true,
     element: <HomePage />,
-    title: "homepage",
-  },
-  {
-    path: "manage-products",
-    element: <ManageProductsPage />,
-    title: "manage-products",
-  },
-  {
-    path: "/product/:id",
-    element: <ProductPage />,
-    title: "product",
-  },
-  {
-    path: "/cart",
-    element: <CartPage />,
-    title: "cart",
-  },
-  {
-    path: "/profile",
-    element: <UserPage />,
-    title: "profile",
   },
   {
     path: "/login",
     element: <LoginPage />,
-    title: "login",
+  },
+  {
+    path: "/product/:id",
+    element: <ProductPage />,
+  },
+  {
+    path: "/cart",
+    element: <CartPage />,
   },
 ];
 
-export default pagesData;
+export const protectedRoutes: RouteObject[] = [
+  {
+    path: "/profile",
+    element: <UserPage />,
+  },
+  {
+    path: "manage-products",
+    element: <ManageProductsPage />,
+  },
+];
