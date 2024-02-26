@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 import UserMenu from "./UserMenu";
 
-const InteractiveUserIcon = () => {
+const UserIconButton = () => {
   const [anchorElUser, setAnchorElUser] = useState<HTMLElement | null>(null);
 
   const navigate = useNavigate();
@@ -48,4 +48,4 @@ const InteractiveUserIcon = () => {
   );
 };
 
-export default InteractiveUserIcon;
+export default UserIconButton;

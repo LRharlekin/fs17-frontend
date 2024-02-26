@@ -5,6 +5,7 @@ import ManageProductsPage from "./ManageProducts";
 import ProductPage from "./Product";
 import CartPage from "./Cart";
 import CollectionPage from "./Collection";
+import SearchPage from "./Search";
 import UserPage from "./User";
 import LoginPage from "./Login";
 
@@ -28,6 +29,10 @@ export const publicRoutes: RouteObject[] = [
   {
     path: "/collections/:category",
     element: <CollectionPage />,
+  },
+  {
+    path: "/search",
+    element: <SearchPage />,
   },
 ];
 

@@ -10,7 +10,8 @@ import {
 } from "@mui/icons-material";
 
 // import CountrySelect from "./CountrySelect";
-import InteractiveUserIcon from "./InteractiveUserIcon";
+import UserIconButton from "./UserIconButton";
+import SearchIconButton from "./SearchIconButton";
 
 const NavToolBar = () => {
   const navigate = useNavigate();
@@ -24,12 +25,9 @@ const NavToolBar = () => {
       {/* CountrySelect */}
       {/* <CountrySelect /> */}
       {/* Account, Search, Cart, UserMenu */}
-      <InteractiveUserIcon />
-      <Tooltip title="Search">
-        <IconButton color="inherit" onClick={() => console.log("search")}>
-          <SearchIcon />
-        </IconButton>
-      </Tooltip>
+      <UserIconButton />
+      <SearchIconButton />
+
       <Tooltip title="Cart">
         <IconButton color="inherit" onClick={handleCartClick}>
           <Badge
