@@ -26,6 +26,8 @@ const authSlice = createSlice({
       state.token = token;
       state.refreshToken = refreshToken;
     },
+    // getUserWithSession: (state, action: PayloadAction<UserRegisterType>) => {}
+    // ,
     logout: (state) => {
       state.email = null;
       state.token = null;

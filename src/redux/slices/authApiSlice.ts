@@ -1,4 +1,6 @@
 // Extend the API slice to auth
+import type { AuthUserSessionResponse } from "../../misc/types";
+
 import { authApi } from "../services/authApi";
 
 export const authApiSlice = authApi.injectEndpoints({
@@ -10,7 +12,13 @@ export const authApiSlice = authApi.injectEndpoints({
         body: loginCredentials,
       }),
     }),
+    getUserWithSession: builder.query<AuthUserSessionResponse, void>({
+      query: () => ({
+        url: "/auth/profile",
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation } = authApiSlice;
+export const { useLoginMutation, useGetUserWithSessionQuery } = authApiSlice;

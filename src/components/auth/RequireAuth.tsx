@@ -1,13 +1,19 @@
-import React, { Fragment as _F } from "react";
+import React from "react";
 
 import { useLocation, Navigate, Outlet } from "react-router-dom";
 import { useAppSelector } from "../../hooks";
 
-import { selectCurrentToken } from "../../redux/slices/authSlice";
+import {
+  selectCurrentToken,
+  selectCurrentUserEmail,
+  selectCurrentUserName,
+} from "../../redux/slices/authSlice";
 
 const RequireAuth = () => {
   const token = useAppSelector(selectCurrentToken);
   const location = useLocation();
+
+  console.log("RequireAuth token", token);
 
   return token ? (
     <Outlet />
