@@ -4,6 +4,7 @@ import HomePage from "./Home";
 import ManageProductsPage from "./ManageProducts";
 import ProductPage from "./Product";
 import CartPage from "./Cart";
+import CollectionPage from "./Collection";
 import UserPage from "./User";
 import LoginPage from "./Login";
 
@@ -23,6 +24,10 @@ export const publicRoutes: RouteObject[] = [
   {
     path: "/cart",
     element: <CartPage />,
+  },
+  {
+    path: "/collections/:category",
+    element: <CollectionPage />,
   },
 ];
 

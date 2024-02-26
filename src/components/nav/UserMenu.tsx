@@ -1,29 +1,31 @@
 import React, { useState } from "react";
 
-import { Menu, MenuItem, Typography } from "@mui/material";
+import {
+  Menu,
+  MenuItem,
+  MenuList,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+
+import USER_MENU_OPTIONS from "../../misc/constants/USER_MENU_OPTIONS";
 
 type UserMenuProps = {
   anchorEl: HTMLElement | null;
-
-  userMenuOptions: string[];
+  handleCloseUserMenu: () => void;
+  handleUserMenuClick: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
-const UserMenu = ({ anchorEl, userMenuOptions }: UserMenuProps) => {
-  const [anchorElUser, setAnchorElUser] = useState<HTMLElement | null>(null);
+const menuOptions = USER_MENU_OPTIONS.slice(1);
 
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    // open user menu
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseUserMenu = () => {
-    // close user menu
-    // setAnchorElUser(null);
-  };
-
+const UserMenu = ({
+  anchorEl,
+  handleCloseUserMenu,
+  handleUserMenuClick,
+}: UserMenuProps) => {
   return (
     <Menu
-      sx={{ mt: "45px" }}
+      sx={{ mt: "45px", display: { xs: "none", md: "block" } }}
       id="menu-appbar"
       anchorEl={anchorEl}
       anchorOrigin={{
@@ -35,14 +37,23 @@ const UserMenu = ({ anchorEl, userMenuOptions }: UserMenuProps) => {
         vertical: "top",
         horizontal: "right",
       }}
-      open={Boolean(anchorElUser)}
+      open={Boolean(anchorEl)}
       onClose={handleCloseUserMenu}
     >
-      {userMenuOptions.map((setting) => (
-        <MenuItem key={setting} onClick={handleCloseUserMenu}>
-          <Typography textAlign="center">{setting}</Typography>
-        </MenuItem>
-      ))}
+      <MenuList>
+        {menuOptions.map(({ id, path, name, icon: IconComponent }) => (
+          <MenuItem
+            key={`user-menu-option-${id}`}
+            onClick={handleUserMenuClick}
+            data-path={path}
+          >
+            <ListItemIcon>
+              <IconComponent />
+            </ListItemIcon>
+            <ListItemText>{name}</ListItemText>
+          </MenuItem>
+        ))}
+      </MenuList>
     </Menu>
   );
 };

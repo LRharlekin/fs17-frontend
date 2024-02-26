@@ -1,45 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import { IconButton, Toolbar, Tooltip } from "@mui/material";
-import { AccountCircle } from "@mui/icons-material";
+import { Badge, Button, IconButton, Toolbar, Tooltip } from "@mui/material";
+import {
+  Search as SearchIcon,
+  ShoppingCart as FullCartIcon,
+  ShoppingCartOutlined as EmptyCartIcon,
+} from "@mui/icons-material";
+
+// import CountrySelect from "./CountrySelect";
+import InteractiveUserIcon from "./InteractiveUserIcon";
 
 const NavToolBar = () => {
   const navigate = useNavigate();
 
-  const handleAccountIconClick = (event: React.MouseEvent<HTMLElement>) => {
-    // if not logged in: redirect to login page
-    navigate("/login");
-    // if logged in: open user menu
-
-    setAnchorElUser(event.currentTarget);
+  const handleCartClick = (event: React.MouseEvent<HTMLElement>) => {
+    navigate("/cart");
   };
 
   return (
-    <Toolbar component="nav">
+    <Toolbar component="nav" sx={{ flexGrow: 0 }}>
       {/* CountrySelect */}
-      <select>
-        {/* CountrySelect.Option */}
-        <option value="en">Finland (EUR)</option>
-        <option value="en">Estonia (EUR)</option>
-        <option value="en">Latvia (EUR)</option>
-        <option value="en">Lithuania (EUR)</option>
-        <option value="es">Norway (NOK)</option>
-        <option value="es">Sweden (SEK)</option>
-        <option value="es">Denmark (DKK)</option>
-      </select>
-      <Tooltip title="Login">
-        <IconButton onClick={() => console.log("login")}>
-          {/* <IconButton onClick={() => console.log("login")}> */}
-          {/* navigate to login page */}
-          {/* <Link to="/login">👤</Link> */}
-          <AccountCircle />
+      {/* <CountrySelect /> */}
+      {/* Account, Search, Cart, UserMenu */}
+      <InteractiveUserIcon />
+      <Tooltip title="Search">
+        <IconButton color="inherit" onClick={() => console.log("search")}>
+          <SearchIcon />
         </IconButton>
       </Tooltip>
-
-      <div>🔎 Search</div>
-      <div>🛒 Cart</div>
+      <Tooltip title="Cart">
+        <IconButton color="inherit" onClick={handleCartClick}>
+          <Badge
+            badgeContent={0}
+            color="secondary"
+            showZero
+            max={99}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+          >
+            <EmptyCartIcon />
+          </Badge>
+        </IconButton>
+      </Tooltip>
     </Toolbar>
   );
 };

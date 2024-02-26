@@ -1,35 +1,53 @@
+import { Box, Button } from "@mui/material";
+
 import { NavLink as RouterNavLink } from "react-router-dom";
 
-// compound component parent
+import CATEGORIES from "../../misc/constants/CATEGORIES";
 
 const NavMenu = () => {
+  const pages = CATEGORIES.map(({ id, name: categoryName }) => {
+    return { id, name: categoryName.toUpperCase() };
+  });
   return (
-    <menu className="NavMenu">
-      <RouterNavLink
-        to="/"
-        end
-        className={({ isActive, isPending, isTransitioning }) =>
-          [
-            isPending ? "pending" : "",
-            isActive ? "active" : "",
-            isTransitioning ? "transitioning" : "",
-          ].join(" ")
-        }
-        // style={({ isActive, isPending, isTransitioning }) => {
-        //   return {
-        //     fontWeight: isActive ? "bold" : "",
-        //     color: isPending ? "red" : "black",
-        //     viewTransitionName: isTransitioning ? "slide" : "",
-        //   };
-        // }}
-      >
-        Home
-      </RouterNavLink>
-      <div>Link 1</div>
-      <div>Link 2</div>
-      <div>Link 3</div>
-      <div>Link 4</div>
-    </menu>
+    <Box
+      component="menu"
+      className="main-navigation"
+      sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
+    >
+      {pages.map(({ id, name: categoryName }) => (
+        <Button
+          disableRipple
+          key={`category-page-${id}`}
+          sx={{
+            color: "white",
+            display: "block",
+          }}
+        >
+          <RouterNavLink
+            to={`/collections/${categoryName.toLowerCase()}`}
+            end
+            className={({ isActive, isPending, isTransitioning }) =>
+              [
+                isPending ? "pending" : "",
+                isActive ? "active" : "",
+                isTransitioning ? "transitioning" : "",
+              ].join(" ")
+            }
+            style={({ isActive, isPending, isTransitioning }) => {
+              return {
+                fontWeight: isActive ? "bold" : "",
+                color: "white",
+                textDecoration: "none",
+                // color: isPending ? "red" : "black",
+                // viewTransitionName: isTransitioning ? "slide" : "",
+              };
+            }}
+          >
+            {categoryName}
+          </RouterNavLink>
+        </Button>
+      ))}
+    </Box>
   );
 };
 

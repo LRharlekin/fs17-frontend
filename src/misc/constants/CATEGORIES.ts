@@ -27,13 +27,6 @@ const CATEGORIES = [
     creationAt: "2024-02-22T02:08:48.000Z",
     updatedAt: "2024-02-22T02:08:48.000Z",
   },
-  {
-    id: 5,
-    name: "Miscellaneous",
-    image: "https://i.imgur.com/BG8J0Fj.jpg",
-    creationAt: "2024-02-22T02:08:48.000Z",
-    updatedAt: "2024-02-22T02:08:48.000Z",
-  },
 ];
 
 export default CATEGORIES;

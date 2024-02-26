@@ -3,6 +3,8 @@ import AppBar from "@mui/material/AppBar";
 
 import Container from "../Container";
 import NavMenu from "./NavMenu";
+import HamburgerMenu from "./HamburgerMenu";
+import NavLogo from "./NavLogo";
 import NavToolBar from "./NavToolBar";
 
 const NavBar = () => {
@@ -11,10 +13,10 @@ const NavBar = () => {
   return (
     <_F>
       <AppBar position="static">
-        <Container>
+        <Container flexDirection="row">
+          <HamburgerMenu />
+          <NavLogo />
           <NavMenu />
-
-          <div>LOGO 👗</div>
 
           <NavToolBar />
         </Container>
