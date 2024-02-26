@@ -42,7 +42,7 @@ export const protectedRoutes: RouteObject[] = [
     element: <UserPage />,
   },
   {
-    path: "manage-products",
+    path: "/manage-products",
     element: <ManageProductsPage />,
   },
 ];
