@@ -11,10 +11,12 @@ import {
   selectCurrentToken,
 } from "../../redux/slices/authSlice";
 
-import Container from "../../components/Container";
 import { AppDispatch } from "../../redux/store";
 
-const UserPage = () => {
+import Container from "../../components/Container";
+import AccountDataTable from "../../components/tables/AccountTable";
+
+const ProfilePage = () => {
   const dispatch: AppDispatch = useAppDispatch();
 
   const {
@@ -40,26 +42,35 @@ const UserPage = () => {
     token: useAppSelector(selectCurrentToken),
   };
 
-  console.log("UserPage name", user.name);
-  console.log("UserPage email", user.email);
-  console.log("UserPage token", user.token);
+  console.log("ProfilePage name", user.name);
+  console.log("ProfilePage email", user.email);
+  console.log("ProfilePage token", user.token);
 
-  const welcomeMessage = fetchedSession.name
-    ? `Welcome, ${fetchedSession.name}!`
-    : "Welcome!";
+  let welcomeMessage = null;
+
+  if (isLoading) {
+    welcomeMessage = "loading";
+  } else if (isError) {
+    welcomeMessage = <p>error</p>;
+  } else if (isSuccess) {
+    welcomeMessage = fetchedSession.name
+      ? `Welcome, ${fetchedSession.name}!`
+      : "Welcome!";
+  }
 
   return (
     <Container component="main">
       <h1>User</h1>
       <p>{welcomeMessage}</p>
-      <p>
-        <Link to="/manage-products">Manage Products</Link>
-      </p>
-      <p>
-        <Link to="/manage-products">My Settings</Link>
-      </p>
+      <AccountDataTable
+        isLoading={isLoading}
+        name={fetchedSession?.name}
+        email={fetchedSession?.email}
+        password={fetchedSession?.password}
+        pictureSrc={fetchedSession?.avatar}
+      />
     </Container>
   );
 };
 
-export default UserPage;
+export default ProfilePage;

@@ -6,7 +6,7 @@ import ProductPage from "./Product";
 import CartPage from "./Cart";
 import CollectionPage from "./Collection";
 import SearchPage from "./Search";
-import UserPage from "./User";
+import ProfilePage from "./Profile";
 import LoginPage from "./Login";
 
 export const publicRoutes: RouteObject[] = [
@@ -39,7 +39,7 @@ export const publicRoutes: RouteObject[] = [
 export const protectedRoutes: RouteObject[] = [
   {
     path: "/profile",
-    element: <UserPage />,
+    element: <ProfilePage />,
   },
   {
     path: "/manage-products",

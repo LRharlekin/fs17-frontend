@@ -25,13 +25,11 @@ type LoginFormFields = {
 };
 
 const LoginForm = () => {
-  /* component setup start */
   const [alertOpen, setAlertOpen] = useState(false);
 
   const navigate = useNavigate();
   const [login, { isLoading, error: loginError }] = useLoginMutation();
   const dispatch = useAppDispatch();
-  /* component setup end */
 
   const form = useForm<LoginFormFields>({
     defaultValues: {
