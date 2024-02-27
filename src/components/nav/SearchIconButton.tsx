@@ -5,16 +5,17 @@ import { useNavigate } from "react-router-dom";
 import { IconButton, Tooltip } from "@mui/material";
 
 import SearchIcon from "@mui/icons-material/Search";
+import NavToolTip from "./NavToolTip";
 
 const SearchIconButton = (): ReactElement => {
   const navigate = useNavigate();
 
   return (
-    <Tooltip title="Search">
+    <NavToolTip title="Search">
       <IconButton color="inherit" onClick={() => navigate("/search")}>
         <SearchIcon />
       </IconButton>
-    </Tooltip>
+    </NavToolTip>
   );
 };
 

@@ -1,14 +1,21 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import type { UserRegisterType } from "../../misc/types";
+import type {
+  AuthUserSessionResponse,
+  UserRegisterType,
+  UserType,
+} from "../../misc/types";
 import type { AppState } from "../store";
 
-const initialState: UserRegisterType = {
+const initialState: UserType = {
+  id: null,
   name: null,
   email: null,
   password: null,
   token: null,
   refreshToken: null,
+  avatar: null,
+  role: null,
 };
 
 const authSlice = createSlice({
@@ -26,20 +33,27 @@ const authSlice = createSlice({
       state.token = token;
       state.refreshToken = refreshToken;
     },
+    setUserSession: (state, action: PayloadAction<AuthUserSessionResponse>) => {
+      const { id, name, role, avatar } = action.payload;
+      state.id = id;
+      state.name = name;
+      state.role = role;
+      state.avatar = avatar;
+    },
     logout: (state) => {
-      state.email = null;
-      state.token = null;
-      state.refreshToken = null;
+      Object.assign(state, initialState);
     },
   },
 });
 
-export const { setCredentials, logout } = authSlice.actions;
+export const { setCredentials, setUserSession, logout } = authSlice.actions;
 
 export default authSlice.reducer;
 
 export const selectCurrentUserEmail = (state: AppState) => state.auth.email;
+export const selectCurrentUserAvatar = (state: AppState) => state.auth.avatar;
 export const selectCurrentUserName = (state: AppState) => state.auth.name;
 export const selectCurrentToken = (state: AppState) => state.auth.token;
 export const selectCurrentRefreshToken = (state: AppState) =>
   state.auth.refreshToken;
+export const selectCurrentUserRole = (state: AppState) => state.auth.role;

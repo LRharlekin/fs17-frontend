@@ -7,14 +7,16 @@ import { useGetUserWithSessionQuery } from "../../redux/slices/authApiSlice";
 
 import {
   selectCurrentUserName,
-  selectCurrentUserEmail,
-  selectCurrentToken,
+  // selectCurrentUserEmail,
+  // selectCurrentToken,
+  setUserSession,
 } from "../../redux/slices/authSlice";
 
 import { AppDispatch } from "../../redux/store";
 
 import Container from "../../components/Container";
 import AccountDataTable from "../../components/tables/AccountTable";
+import type { AuthUserSessionResponse } from "../../misc/types";
 
 const ProfilePage = () => {
   const dispatch: AppDispatch = useAppDispatch();
@@ -32,19 +34,29 @@ const ProfilePage = () => {
   useEffect(() => {
     if (isSuccess) {
       console.log("fetchedSession", fetchedSession);
-      // dispatch(setUserSession(fetchedSession));
+      dispatch(setUserSession(fetchedSession as AuthUserSessionResponse));
     }
   }, [isSuccess, fetchedSession, dispatch]);
 
-  const user = {
-    name: useAppSelector(selectCurrentUserName),
-    email: useAppSelector(selectCurrentUserEmail),
-    token: useAppSelector(selectCurrentToken),
-  };
+  // const user = {
+  //   name: useAppSelector(selectCurrentUserName),
+  //   email: useAppSelector(selectCurrentUserEmail),
+  //   token: useAppSelector(selectCurrentToken),
+  // };
 
-  console.log("ProfilePage name", user.name);
-  console.log("ProfilePage email", user.email);
-  console.log("ProfilePage token", user.token);
+  // const currentUserName = useAppSelector(selectCurrentUserName);
+
+  // useEffect(() => {
+  //   console.log("ProfilePage useEffect");
+  //   console.log("current user name:", currentUserName);
+  // }, [
+  //   fetchedSession,
+  //   isLoading,
+  //   isSuccess,
+  //   isError,
+  //   fetchUserSessionError,
+  //   currentUserName,
+  // ]);
 
   let welcomeMessage = null;
 

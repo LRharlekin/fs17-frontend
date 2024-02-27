@@ -5,17 +5,21 @@ import { useAppSelector } from "../../hooks";
 
 import {
   selectCurrentToken,
-  selectCurrentUserEmail,
-  selectCurrentUserName,
+  // selectCurrentUserRole,
 } from "../../redux/slices/authSlice";
 
-const RequireAuth = () => {
+const RequireAuth = ({
+  allowedRoles,
+}: {
+  allowedRoles?: Array<"customer" | "admin" | null>;
+}) => {
   const token = useAppSelector(selectCurrentToken);
+  // const role = useAppSelector(selectCurrentUserRole);
   const location = useLocation();
 
   console.log("RequireAuth token", token);
 
-  return token ? (
+  return token /*  && allowedRoles?.includes(role) */ ? (
     <Outlet />
   ) : (
     <Navigate to="/login" state={{ from: location }} replace />

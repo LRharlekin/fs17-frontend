@@ -41,6 +41,9 @@ export const protectedRoutes: RouteObject[] = [
     path: "/profile",
     element: <ProfilePage />,
   },
+];
+
+export const protectedAdminRoutes: RouteObject[] = [
   {
     path: "/manage-products",
     element: <ManageProductsPage />,
