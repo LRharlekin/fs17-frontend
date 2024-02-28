@@ -19,7 +19,7 @@ import CartHeader from "./CartHeader";
 import CheckoutButton from "./CheckoutButton";
 
 const CartDrawer = () => {
-  const [cartOpen, setCartOpen] = useState(true);
+  const [cartOpen, setCartOpen] = useState(false);
 
   const iOS =
     typeof navigator !== "undefined" &&

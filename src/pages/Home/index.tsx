@@ -4,13 +4,13 @@ import { useGetAllProductsQuery } from "../../redux/services/productsApi";
 import { setProducts } from "../../redux/slices/productsSlice";
 
 import Container from "../../components/Container";
-import ProductFeed from "../../components/ProductFeed";
+import ProductFeed from "../../components/products/ProductFeed";
 
 import type { AppDispatch } from "../../redux/store";
 
 const HomePage = () => {
   const dispatch: AppDispatch = useAppDispatch();
-  const products = useAppSelector((state) => state.products);
+  const items = useAppSelector((state) => state.products);
 
   const {
     data: fetchedProducts,
@@ -39,9 +39,9 @@ const HomePage = () => {
     content = <div>Error</div>;
   } else if (isSuccess) {
     console.log("isSuccess !!!");
-    console.log("products from useGetAllProductsQuery");
+    console.log("fetchedProducts from useGetAllProductsQuery");
     console.log("====================================");
-    console.log(products);
+    console.log(fetchedProducts);
     content = <ProductFeed feedData={fetchedProducts} />;
   }
 
