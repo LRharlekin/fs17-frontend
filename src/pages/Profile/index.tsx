@@ -73,6 +73,7 @@ const ProfilePage = () => {
   return (
     <Container component="main">
       <h1>User</h1>
+      <Link to="/manage-products">Manage Products </Link>
       <p>{welcomeMessage}</p>
       <AccountDataTable
         isLoading={isLoading}

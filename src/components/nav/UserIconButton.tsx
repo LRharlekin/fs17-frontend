@@ -39,9 +39,9 @@ const UserIconButton = () => {
       navigate(event.currentTarget.getAttribute("data-path") as string);
     }
     // if currentTarget has data-action, perform that action^
-    if (event.currentTarget.getAttribute("data-action")) {
-      event.currentTarget.getAttribute("data-action")();
-    }
+    // if (event.currentTarget.getAttribute("data-action")) {
+    //   event.currentTarget.getAttribute("data-action")();
+    // }
     handleCloseUserMenu();
   };
 

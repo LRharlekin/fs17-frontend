@@ -6,7 +6,7 @@ import {
   Storefront as StorefrontIcon,
 } from "@mui/icons-material";
 
-type UserMenuOptionType = {
+export type UserMenuOptionType = {
   id: number;
   name: string;
   icon: React.ComponentType;

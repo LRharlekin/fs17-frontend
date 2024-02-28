@@ -9,12 +9,14 @@ import {
 } from "@mui/material";
 
 import { useAppDispatch, useAppSelector } from "../../hooks";
+
 import {
   selectCurrentUserEmail,
   selectCurrentUserRole,
 } from "../../redux/slices/authSlice";
 
 import USER_MENU_OPTIONS from "../../misc/constants/USER_MENU_OPTIONS";
+import type { UserMenuOptionType } from "../../misc/constants/USER_MENU_OPTIONS";
 import logout from "../../redux/slices/authSlice";
 
 type UserMenuProps = {
@@ -34,17 +36,17 @@ type UserMenuProps = {
 // });
 
 let menuOptions: UserMenuOptionType[] = [];
-if (USER_MENU_OPTIONS.length > 1) {
-  menuOptions = USER_MENU_OPTIONS.filter((option) => {
-    if (option.requiresAuth) {
-      return true;
-    }
-    if (option.requiresRole) {
-      return true;
-    }
-    return false;
-  });
-}
+// if (USER_MENU_OPTIONS.length > 1) {
+//   menuOptions = USER_MENU_OPTIONS.filter((option) => {
+//     if (option.requiresAuth) {
+//       return true;
+//     }
+//     if (option.requiresRole) {
+//       return true;
+//     }
+//     return false;
+//   });
+// }
 menuOptions = USER_MENU_OPTIONS.slice(1);
 
 const UserMenu = ({
