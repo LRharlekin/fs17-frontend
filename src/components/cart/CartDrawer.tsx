@@ -18,16 +18,21 @@ const CartDrawer = ({ isCartOpen, toggleFunc }: CartDrawerProps) => {
     /iPad|iPhone|iPod/.test(navigator.userAgent);
 
   const cartItems = useAppSelector(selectCart);
-  console.log("selected cart items from drawer:", cartItems);
 
   const CartList = (
     <Box role="presentation">
       <List>
-        {/* select cart items from redux store */}
-        {cartItems.map(({ id, quantity }) => {
-          // console.log("cart item id:", id);
-          // console.log("cart item quantity:", quantity);
-          return <CartListItem itemId={id} quantity={quantity} />;
+        {cartItems.map(({ id, quantity }, index) => {
+          if (index === 0) {
+            return <CartListItem itemId={id} quantity={quantity} />;
+          } else {
+            return (
+              <>
+                <Divider />
+                <CartListItem itemId={id} quantity={quantity} />
+              </>
+            );
+          }
         })}
       </List>
     </Box>

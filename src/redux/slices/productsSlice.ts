@@ -1,4 +1,5 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { AppState } from "../store";
 
 import {
   ProductType,
@@ -36,14 +37,17 @@ const productsSlice = createSlice({
   },
 });
 
-// sub-selectors: use in components
-// export const selectAllProducts = (state: InitialState) => state.products;
 // actions: use in components
 // const { getAllProducts } = productsSlice.actions;
-const { setProducts, productAdded } = productsSlice.actions;
+export const { setProducts, productAdded } = productsSlice.actions;
+
 // reducer: pass into store config
 const productsReducer = productsSlice.reducer;
-
-// export { getAllProducts };
-export { setProducts, productAdded };
 export default productsReducer;
+
+// sub-selectors: use in components
+// export const selectAllProducts = (state: InitialState) => state.products;
+
+export const selectProductById = (state: AppState, id: number) => {
+  return state.products.products.find((product) => product.id === id);
+};

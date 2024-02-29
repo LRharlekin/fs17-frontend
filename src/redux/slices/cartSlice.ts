@@ -12,13 +12,7 @@ type CartState = {
 };
 
 const initialState: CartState = {
-  cartItems: [
-    // { id: 1, quantity: 1 },
-    // { id: 2, quantity: 1 },
-    // { id: 4, quantity: 3 },
-    // { id: 5, quantity: 2 },
-    // { id: 6, quantity: 1 },
-  ],
+  cartItems: [],
 };
 
 const cartSlice = createSlice({
@@ -26,13 +20,14 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     incrementCartQuantity: (state, action: PayloadAction<number>) => {
-      // check if item is already in cart, if so, increment quantity
-      // if not, add item to cart with quantity of 1
       const cartItems = state.cartItems;
+      // check if item is already in cart,
       const item = cartItems.find((item) => item.id === action.payload);
       if (item) {
+        // ...if so, increment quantity
         item.quantity += 1;
       } else {
+        // ...else add item to cart with quantity of 1
         cartItems.push({
           id: action.payload,
           quantity: 1,
@@ -40,19 +35,20 @@ const cartSlice = createSlice({
       }
     },
     decrementCartQuantity: (state, action: PayloadAction<number>) => {
-      // check if item is already in cart, if so, decrement quantity
-      // if not, do nothing
-      // if quantity is 1, remove item from cart
       const cartItems = state.cartItems;
+      // check if item is already in cart,
       const item = cartItems.find((item) => item.id === action.payload);
       if (item) {
         if (item.quantity === 1) {
+          // if quantity === 1, remove item from cart
           cartItems.splice(cartItems.indexOf(item), 1);
         } else {
+          // else if quantity !== 1, decrement quantity
           item.quantity -= 1;
         }
       }
     },
+    // if item not present, do nothing
   },
 });
 
@@ -65,6 +61,7 @@ export const selectCart = (state: AppState) => state.cart.cartItems;
 export const selectCartQuantity = (state: AppState) => {
   return state.cart.cartItems.reduce((acc, item) => acc + item.quantity, 0);
 };
+
 export const selectCartItemQuantity = (state: AppState, id: number) => {
   const cartItems = selectCart(state);
   const item = cartItems.find((item) => item.id === id);

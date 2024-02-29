@@ -1,5 +1,3 @@
-import React from "react";
-
 import { styled, lighten } from "@mui/material/styles";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
@@ -11,11 +9,3 @@ const QuantityButtonGroup = styled(ButtonGroup)(({ theme }) => ({
 }));
 
 export default QuantityButtonGroup;
-
-// const QuantityButtonGroup = () => {
-//   return (
-//     <div>QuantityButtonGroup</div>
-//   )
-// }
-
-// export default QuantityButtonGroup

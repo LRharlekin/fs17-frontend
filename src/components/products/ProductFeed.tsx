@@ -31,7 +31,7 @@ const ProductFeed = ({ feedData }: ProductFeedProps) => {
   const navigate = useNavigate();
   // const products = useAppSelector((state) => state.products);
 
-  const renderedProducts = feedData.slice(0, 8).map((product: ProductType) => {
+  const renderedProducts = feedData.slice(0, 40).map((product: ProductType) => {
     return (
       <ProductCard
         key={`product-card-${product.id}`}
