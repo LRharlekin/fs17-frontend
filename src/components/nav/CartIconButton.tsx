@@ -2,6 +2,9 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 
+import { useAppSelector } from "../../hooks";
+import { selectCartQuantity } from "../../redux/slices/cartSlice";
+
 import { Badge, IconButton } from "@mui/material";
 import { ShoppingCartOutlined as EmptyCartIcon } from "@mui/icons-material";
 
@@ -10,6 +13,7 @@ import CartDrawer from "../cart/CartDrawer";
 
 const CartIconButton = () => {
   const navigate = useNavigate();
+  const cartQuantity = useAppSelector(selectCartQuantity);
 
   const handleCartClick = (event: React.MouseEvent<HTMLElement>) => {
     navigate("/cart");
@@ -20,9 +24,8 @@ const CartIconButton = () => {
       <NavToolTip title="Cart">
         <IconButton color="inherit" onClick={handleCartClick}>
           <Badge
-            badgeContent={0}
+            badgeContent={cartQuantity}
             color="secondary"
-            showZero
             max={99}
             anchorOrigin={{
               vertical: "top",

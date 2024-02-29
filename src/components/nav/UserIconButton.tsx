@@ -51,16 +51,22 @@ const UserIconButton = () => {
   ) => {
     if (isLoggedIn && currentUserAvatar) {
       return (
-        <Avatar
-          src={currentUserAvatar}
-          alt="View your user settings"
-          style={{
-            width: "1.5rem",
-            height: "1.5rem",
-            borderRadius: "50%",
-            border: "1px solid #fff",
-          }}
-        />
+        <StyledBadge
+          overlap="circular"
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+          variant="dot"
+        >
+          <Avatar
+            src={currentUserAvatar}
+            alt="View your user settings"
+            style={{
+              width: "1.5rem",
+              height: "1.5rem",
+              borderRadius: "50%",
+              border: "1px solid #fff",
+            }}
+          />
+        </StyledBadge>
       );
     } else if (isLoggedIn) {
       return (

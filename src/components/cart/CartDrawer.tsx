@@ -17,9 +17,10 @@ import MailIcon from "@mui/icons-material/Mail";
 
 import CartHeader from "./CartHeader";
 import CheckoutButton from "./CheckoutButton";
+import ProductFeed from "../products/ProductFeed";
 
 const CartDrawer = () => {
-  const [cartOpen, setCartOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(true);
 
   const iOS =
     typeof navigator !== "undefined" &&
@@ -65,6 +66,7 @@ const CartDrawer = () => {
         }}
       >
         {DrawerList}
+        <ProductFeed feedData={[]} />
       </Stack>
       <CheckoutButton />
     </SwipeableDrawer>

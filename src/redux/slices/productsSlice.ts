@@ -13,25 +13,15 @@ import {
 
 type InitialState = {
   products: Array<ProductType>;
-  loading: boolean;
-  error: string | null;
+  // loading: boolean;
+  // error: string | null;
 };
 
 const initialState: InitialState = {
   products: [],
-  loading: false,
-  error: null,
+  // loading: false,
+  // error: null,
 };
-
-// getAllProducts
-// getSingleProduct
-// filterProductsByCategory
-// sortProductsByPrice
-
-// PROTECTED role === "admin"
-// productAdded
-// productUpdated
-// productDeleted
 
 const productsSlice = createSlice({
   name: "products",
@@ -43,9 +33,6 @@ const productsSlice = createSlice({
     productAdded: (state, action: PayloadAction<ProductType>) => {
       state.products.push(action.payload);
     },
-    // getAllProducts: (state, action: PayloadAction<Array<ProductType>>) => {
-    //   state.products = action.payload;
-    // },
   },
 });
 

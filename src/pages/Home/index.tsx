@@ -34,13 +34,11 @@ const HomePage = () => {
     content = <div>Loading...</div>;
   } else if (isError) {
     console.log("isError");
-    console.log("====================================");
+
     console.log(error);
     content = <div>Error</div>;
   } else if (isSuccess) {
-    console.log("isSuccess !!!");
     console.log("fetchedProducts from useGetAllProductsQuery");
-    console.log("====================================");
     console.log(fetchedProducts);
     content = <ProductFeed feedData={fetchedProducts} />;
   }

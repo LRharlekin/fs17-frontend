@@ -2,27 +2,24 @@ import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
 // import reducers
-// import productsReducer from "./slices/productsSlice";
-import usersReducer from "./slices/usersSlice";
 import authReducer from "./slices/authSlice";
+import cartReducer from "./slices/cartSlice";
+import productsReducer from "./slices/productsSlice";
+import usersReducer from "./slices/usersSlice";
 // import services
 import productsApi from "./services/productsApi";
 import { authApi } from "./services/authApi";
 
 const store = configureStore({
   reducer: {
-    users: usersReducer,
     auth: authReducer,
-    // products
-    // products: productsReducer,
-    // cart
+    cart: cartReducer,
+    products: productsReducer,
+    users: usersReducer,
+
     [productsApi.reducerPath]: productsApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
   },
-  /* DELETE IN PRODUCTION */
-  // devTools: true,
-  // Adding the api middleware enables caching, invalidation, polling,
-  // and other useful features of RTK Query.
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
       .concat(productsApi.middleware)

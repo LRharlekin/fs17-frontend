@@ -3,7 +3,7 @@ import type { ProductType, CategoryType } from "../../misc/types";
 
 const productsApi = createApi({
   // reducerPath = unique key to mount service to in store
-  reducerPath: "products",
+  reducerPath: "productApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://api.escuelajs.co/api/v1",
   }),

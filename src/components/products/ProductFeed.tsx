@@ -11,18 +11,37 @@ import CardMedia from "./CardMedia";
 import CardTitle from "./CardTitle";
 import CardDescription from "./CardDescription";
 import CategoryChip from "./CategoryChip";
+import MoreDetailsButton from "./MoreDetailsButton";
 import ProductCard from "./ProductCard";
 
 type ProductFeedProps = {
   feedData: Array<ProductType>;
 };
 
-const ActionsComponent = [
-  <Button variant="contained" size="small" color="primary">
-    More Details
-  </Button>,
-  <AddToCartButton />,
-];
+const getActionsComponents = (itemId: number) => {
+  const actionsArray = [];
+  actionsArray.push(
+    <MoreDetailsButton key={`more-details-${itemId}`} itemId={itemId} />
+  );
+  actionsArray.push(
+    <AddToCartButton key={`add-to-cart-${itemId}`} itemId={itemId} />
+  );
+  return actionsArray;
+};
+
+// const actionsComponentsArray = [
+//   <Button
+//     variant="contained"
+//     size="small"
+//     color="primary"
+//     sx={{
+//       flexGrow: 1,
+//     }}
+//   >
+//     More Details
+//   </Button>,
+//   <AddToCartButton itemId={1} />,
+// ];
 
 const ProductFeed = ({ feedData }: ProductFeedProps) => {
   const navigate = useNavigate();
@@ -31,7 +50,7 @@ const ProductFeed = ({ feedData }: ProductFeedProps) => {
   const renderedProducts = feedData.slice(0, 8).map((product: ProductType) => {
     return (
       <ProductCard
-        key={product.id}
+        key={`product-card-${product.id}`}
         media={
           <CardMedia
             height="140"
@@ -42,7 +61,8 @@ const ProductFeed = ({ feedData }: ProductFeedProps) => {
         title={<CardTitle price={product.price} title={product.title} />}
         category={<CategoryChip category={product.category.name} />}
         description={<CardDescription description={product.description} />}
-        actions={ActionsComponent}
+        actions={getActionsComponents(product.id)}
+        // actions={actionsComponentsArray}
       />
     );
   });

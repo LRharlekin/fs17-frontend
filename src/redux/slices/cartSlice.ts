@@ -1,72 +1,72 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// addProductToCart
-// removeProductFromCart
-// updateProductQuantityInCart
+import type { AppState } from "../store";
 
-/*
-import { NeededType } from "../../types";
+type CartItem = {
+  id: number;
+  quantity: number;
+};
 
-interface TemplateState {
-	counterValue: number;
-}
+type CartState = {
+  cartItems: Array<CartItem>;
+};
 
-const initialState: TemplateState = {
-	counterValue: 0,
-}
+const initialState: CartState = {
+  cartItems: [
+    // { id: 1, quantity: 1 },
+    // { id: 2, quantity: 1 },
+    // { id: 4, quantity: 3 },
+    // { id: 5, quantity: 2 },
+    // { id: 6, quantity: 1 },
+  ],
+};
 
-// declare async reducers
-const url = "https://api.example.com/data";
+const cartSlice = createSlice({
+  name: "cart",
+  initialState,
+  reducers: {
+    incrementCartQuantity: (state, action: PayloadAction<number>) => {
+      // check if item is already in cart, if so, increment quantity
+      // if not, add item to cart with quantity of 1
+      const cartItems = state.cartItems;
+      const item = cartItems.find((item) => item.id === action.payload);
+      if (item) {
+        item.quantity += 1;
+      } else {
+        cartItems.push({
+          id: action.payload,
+          quantity: 1,
+        });
+      }
+    },
+    decrementCartQuantity: (state, action: PayloadAction<number>) => {
+      // check if item is already in cart, if so, decrement quantity
+      // if not, do nothing
+      // if quantity is 1, remove item from cart
+      const cartItems = state.cartItems;
+      const item = cartItems.find((item) => item.id === action.payload);
+      if (item) {
+        if (item.quantity === 1) {
+          cartItems.splice(cartItems.indexOf(item), 1);
+        } else {
+          item.quantity -= 1;
+        }
+      }
+    },
+  },
+});
 
-export const fetchNeededDataAsync = createAsyncThunk(
-  "fetchNeededData",
-  async () => {
-    try {
-      const jsonData = await fetch(url);
-      const data: NeededType = await jsonData.json();
-      return data;
-    } catch (error) {
-      const error = e as Error;
-      return error;
-    }
-  }
-);
+export const { incrementCartQuantity, decrementCartQuantity } =
+  cartSlice.actions;
 
-const templateSlice = createSlice({
-	name: "template",
-	initialState,
-	reducers: {
-		increment: (state) => {
-			state.counterValue += 1;
-		},
-		incrementWithInput: (state, action: PayloadAction<number>) => {
-			console.log("action", action);
-			state.counterValue += action.payload;
-		}
-	},
-  extraReducers: (builder) => {
-    builder.addCase(fetchNeededDataAsync.fulfilled, (state, action) => {
-      console.log("action", action);
-      state.counterValue += 1;
-    })
-    // loading
-    .addCase(fetchNeededDataAsync.pending, (state, action) => {...})
-    // rejected
-    .addCase(fetchNeededDataAsync.rejected, (state, action) => {...};
-    // default case if no other handlers match
-    .addDefaultCase((state, action) => {...});
-  }
-})
+export default cartSlice.reducer;
 
-// actions: use in components
-const { increment, incrementWithPayload } = templateSlice.actions; 
-// reducer: pass into store config
-const templateReducer = templateSlice.reducer; 
-
-export { increment, incrementWithPayload };
-export default templateReducer;
-*/
-
-const cartSlice = {};
-
-export default cartSlice;
+export const selectCart = (state: AppState) => state.cart.cartItems;
+export const selectCartQuantity = (state: AppState) => {
+  return state.cart.cartItems.reduce((acc, item) => acc + item.quantity, 0);
+};
+export const selectCartItemQuantity = (state: AppState, id: number) => {
+  const cartItems = selectCart(state);
+  const item = cartItems.find((item) => item.id === id);
+  return item?.quantity;
+};

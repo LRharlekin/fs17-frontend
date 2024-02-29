@@ -1,7 +1,5 @@
 import { ReactNode } from "react";
 
-import type { ProductType } from "../../misc/types";
-
 import {
   Card,
   CardActions,
@@ -10,9 +8,6 @@ import {
   Grid,
 } from "@mui/material";
 
-import CardMedia from "./CardMedia";
-
-// type Props = Partial<ProductType>;
 type ProductCardProps = {
   media?: ReactNode;
   title?: ReactNode;
@@ -28,6 +23,9 @@ const ProductCard = ({
   description,
   actions,
 }: ProductCardProps) => {
+  // DELETE LATER
+  // const quantity = 0;
+
   return (
     <Grid item xs={1}>
       <Card>
@@ -40,7 +38,12 @@ const ProductCard = ({
           </CardContent>
         </CardActionArea>
         {actions && actions.length > 1 ? (
-          <CardActions>
+          <CardActions
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
             {actions[0]}
             {actions[1]}
           </CardActions>

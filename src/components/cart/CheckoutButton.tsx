@@ -5,7 +5,17 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const CheckoutButton = () => {
   return (
-    <Button sx={{ m: 2 }} variant="contained" endIcon={<ArrowForwardIcon />}>
+    <Button
+      sx={{
+        m: 2,
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        right: 0,
+      }}
+      variant="contained"
+      endIcon={<ArrowForwardIcon />}
+    >
       Checkout
     </Button>
   );
