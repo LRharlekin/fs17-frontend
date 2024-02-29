@@ -20,23 +20,23 @@ const CartDrawer = ({ isCartOpen, toggleFunc }: CartDrawerProps) => {
   const cartItems = useAppSelector(selectCart);
 
   const CartList = (
-    <Box role="presentation">
-      <List>
-        {cartItems.map(({ id, quantity }, index) => {
-          if (index === 0) {
-            return <CartListItem itemId={id} quantity={quantity} />;
-          } else {
-            return (
-              <>
-                <Divider />
-                <CartListItem itemId={id} quantity={quantity} />
-              </>
-            );
-          }
-        })}
-      </List>
-    </Box>
+    <List sx={{ my: 1 }}>
+      {cartItems.map(({ id, quantity }, index) => {
+        if (index === 0) {
+          return <CartListItem itemId={id} quantity={quantity} />;
+        } else {
+          return (
+            <>
+              <Divider />
+              <CartListItem itemId={id} quantity={quantity} />
+            </>
+          );
+        }
+      })}
+    </List>
   );
+
+  const content = cartItems.length > 0 ? CartList : "Your Cart is Empty";
 
   return (
     <SwipeableDrawer
@@ -53,9 +53,10 @@ const CartDrawer = ({ isCartOpen, toggleFunc }: CartDrawerProps) => {
       <Stack
         sx={{
           width: 300,
+          overflow: "auto",
         }}
       >
-        {CartList}
+        {content}
       </Stack>
       <CheckoutButton />
     </SwipeableDrawer>

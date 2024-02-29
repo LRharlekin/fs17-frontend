@@ -12,18 +12,19 @@ const CartHeader = () => {
     <Box
       component="header"
       sx={{
-        mt: 4,
-        mb: 3,
         width: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        bgcolor: "info.light",
       }}
     >
       <ShoppingCartTwoToneIcon
         fontSize="large"
         sx={{
+          mt: 4,
+          mb: 3,
           color: darken(theme.palette.primary.dark, 0.4),
         }}
       />

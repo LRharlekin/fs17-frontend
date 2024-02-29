@@ -12,7 +12,7 @@ const NavBar = () => {
 
   return (
     <_F>
-      <AppBar position="static">
+      <AppBar position="sticky">
         <Container flexDirection="row">
           <HamburgerMenu />
           <NavLogo />
