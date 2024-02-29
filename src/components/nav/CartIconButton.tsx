@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -14,15 +14,22 @@ import CartDrawer from "../cart/CartDrawer";
 const CartIconButton = () => {
   const navigate = useNavigate();
   const cartQuantity = useAppSelector(selectCartQuantity);
+  const [isCartOpen, setIsCartOpen] = useState(false); // Add state variable
 
-  const handleCartClick = (event: React.MouseEvent<HTMLElement>) => {
-    navigate("/cart");
+  const toggleCartDrawer = () => {
+    setIsCartOpen(!isCartOpen); // Toggle the open state
+  };
+
+  const handleCartButtonClick = (event: React.MouseEvent<HTMLElement>) => {
+    // setIsCartOpen(!isCartOpen); // Toggle the open state
+    // navigate("/cart");
+    toggleCartDrawer(); // Call the toggle function
   };
 
   return (
     <>
       <NavToolTip title="Cart">
-        <IconButton color="inherit" onClick={handleCartClick}>
+        <IconButton color="inherit" onClick={handleCartButtonClick}>
           <Badge
             badgeContent={cartQuantity}
             color="secondary"
@@ -36,7 +43,8 @@ const CartIconButton = () => {
           </Badge>
         </IconButton>
       </NavToolTip>
-      <CartDrawer />
+      <CartDrawer toggleFunc={toggleCartDrawer} isCartOpen={isCartOpen} />{" "}
+      {/* Pass the open state to the CartDrawer component */}
     </>
   );
 };
