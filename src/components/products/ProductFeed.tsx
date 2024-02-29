@@ -2,9 +2,7 @@ import { useAppSelector } from "../../hooks";
 import type { ProductType } from "../../misc/types";
 import { useNavigate } from "react-router-dom";
 
-// import { selectAllProducts } from "../redux/slices/productsSlice";
-
-import { Button, Chip, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 
 import AddToCartButton from "./AddToCartButton";
 import CardMedia from "./CardMedia";
@@ -28,20 +26,6 @@ const getActionsComponents = (itemId: number) => {
   );
   return actionsArray;
 };
-
-// const actionsComponentsArray = [
-//   <Button
-//     variant="contained"
-//     size="small"
-//     color="primary"
-//     sx={{
-//       flexGrow: 1,
-//     }}
-//   >
-//     More Details
-//   </Button>,
-//   <AddToCartButton itemId={1} />,
-// ];
 
 const ProductFeed = ({ feedData }: ProductFeedProps) => {
   const navigate = useNavigate();

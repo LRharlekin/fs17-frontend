@@ -14,16 +14,14 @@ import CartDrawer from "../cart/CartDrawer";
 const CartIconButton = () => {
   const navigate = useNavigate();
   const cartQuantity = useAppSelector(selectCartQuantity);
-  const [isCartOpen, setIsCartOpen] = useState(false); // Add state variable
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   const toggleCartDrawer = () => {
-    setIsCartOpen(!isCartOpen); // Toggle the open state
+    setIsCartOpen(!isCartOpen);
   };
 
   const handleCartButtonClick = (event: React.MouseEvent<HTMLElement>) => {
-    // setIsCartOpen(!isCartOpen); // Toggle the open state
-    // navigate("/cart");
-    toggleCartDrawer(); // Call the toggle function
+    toggleCartDrawer();
   };
 
   return (
@@ -44,7 +42,6 @@ const CartIconButton = () => {
         </IconButton>
       </NavToolTip>
       <CartDrawer toggleFunc={toggleCartDrawer} isCartOpen={isCartOpen} />{" "}
-      {/* Pass the open state to the CartDrawer component */}
     </>
   );
 };

@@ -1,25 +1,11 @@
-import React, { /* useState, */ KeyboardEvent, MouseEvent } from "react";
+import { useAppSelector } from "../../hooks";
+import { selectCart } from "../../redux/slices/cartSlice";
 
-import {
-  Box,
-  Divider,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Stack,
-  SwipeableDrawer,
-} from "@mui/material";
-
-/* -------- DELETE LATER -------- */
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-/* -------- DELETE LATER -------- */
+import { Box, Divider, List, Stack, SwipeableDrawer } from "@mui/material";
 
 import CartHeader from "./CartHeader";
 import CheckoutButton from "./CheckoutButton";
-import ProductFeed from "../products/ProductFeed";
+import CartListItem from "./CartListItem";
 
 type CartDrawerProps = {
   isCartOpen: boolean;
@@ -31,27 +17,18 @@ const CartDrawer = ({ isCartOpen, toggleFunc }: CartDrawerProps) => {
     typeof navigator !== "undefined" &&
     /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-  // const toggleDrawer = () => (event: KeyboardEvent | MouseEvent) => {
-  //   if (isCartOpen) {
-  //     onCartClose();
-  //   } else {
-  //     onCartOpen();
-  //   }
-  // };
+  const cartItems = useAppSelector(selectCart);
+  console.log("selected cart items from drawer:", cartItems);
 
   const CartList = (
     <Box role="presentation">
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {/* select cart items from redux store */}
+        {cartItems.map(({ id, quantity }) => {
+          // console.log("cart item id:", id);
+          // console.log("cart item quantity:", quantity);
+          return <CartListItem itemId={id} quantity={quantity} />;
+        })}
       </List>
     </Box>
   );
@@ -74,7 +51,6 @@ const CartDrawer = ({ isCartOpen, toggleFunc }: CartDrawerProps) => {
         }}
       >
         {CartList}
-        <ProductFeed feedData={[]} />
       </Stack>
       <CheckoutButton />
     </SwipeableDrawer>

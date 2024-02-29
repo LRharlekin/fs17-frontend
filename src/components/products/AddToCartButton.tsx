@@ -1,7 +1,6 @@
 import React from "react";
 
-import { useAppDispatch } from "../../hooks";
-import { incrementCartQuantity } from "../../redux/slices/cartSlice";
+import { useIncrementCartQuantity } from "../../hooks";
 
 import { Button } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
@@ -11,17 +10,12 @@ type AddToCartButtonProps = {
 };
 
 const AddToCartButton = ({ itemId }: AddToCartButtonProps) => {
-  const dispatch = useAppDispatch();
-
-  const handleAddToCartClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const id = Number(event.currentTarget.getAttribute("data-item-id"));
-    dispatch(incrementCartQuantity(id));
-  };
+  const incrementCartQuantity = useIncrementCartQuantity(itemId);
 
   return (
     <Button
       data-item-id={itemId}
-      onClick={handleAddToCartClick}
+      onClick={incrementCartQuantity}
       variant="outlined"
       size="small"
       color="primary"
