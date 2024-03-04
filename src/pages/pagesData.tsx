@@ -1,13 +1,12 @@
 import type { RouteObject } from "react-router-dom";
 
-import HomePage from "./Home";
-import ManageProductsPage from "./ManageProducts";
-import ProductPage from "./Product";
-import CartPage from "./Cart";
-import CollectionPage from "./Collection";
-import SearchPage from "./Search";
-import ProfilePage from "./Profile";
-import LoginPage from "./Login";
+import HomePage from "./Home/HomePage";
+import ManageProductsPage from "./ManageProducts/ManageProductsPage";
+import ProductPage from "./Product/ProductPage";
+import CollectionPage from "./Collection/CollectionPage";
+import SearchPage from "./Search/SearchPage";
+import ProfilePage from "./Profile/ProfilePage";
+import LoginPage from "./Login/LoginPage";
 
 export const publicRoutes: RouteObject[] = [
   {
@@ -21,10 +20,6 @@ export const publicRoutes: RouteObject[] = [
   {
     path: "/product/:id",
     element: <ProductPage />,
-  },
-  {
-    path: "/cart",
-    element: <CartPage />,
   },
   {
     path: "/collections/:category",

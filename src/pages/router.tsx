@@ -7,7 +7,7 @@ import {
 } from "./pagesData";
 
 import Layout from "./Layout";
-import ErrorPage from "./Error";
+import ErrorPage from "./Error/ErrorPage";
 import RequireAuth from "../components/auth/RequireAuth";
 
 type Roles = "customer" | "admin";
