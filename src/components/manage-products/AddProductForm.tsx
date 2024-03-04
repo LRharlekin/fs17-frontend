@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 
 import CATEGORIES from "../../misc/constants/CATEGORIES";
-import { FormInputFileUpload as ImageUploadField } from "./FormInputFileUpload";
+import { FormInputFileUpload as ImageUploadField } from "../common/forms/FormInputFileUpload";
 
 type AddProductFormFields = ToString<ProductToAddType>;
 

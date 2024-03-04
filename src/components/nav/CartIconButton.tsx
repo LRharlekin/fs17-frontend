@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useAppSelector } from "../../hooks";
-import { selectCartQuantity } from "../../redux/slices/cartSlice";
+import { selectCartQuantity } from "../cart/cartSlice";
 
 import { Badge, IconButton } from "@mui/material";
 import { ShoppingCartOutlined as EmptyCartIcon } from "@mui/icons-material";

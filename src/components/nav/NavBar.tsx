@@ -1,7 +1,7 @@
 import { useState, Fragment as _F } from "react";
 import AppBar from "@mui/material/AppBar";
 
-import Container from "../Container";
+import Container from "../common/Container";
 import NavMenu from "./NavMenu";
 import HamburgerMenu from "./HamburgerMenu";
 import NavLogo from "./NavLogo";

@@ -6,7 +6,7 @@ import {
   useDecrementCartQuantity,
 } from "../../hooks";
 
-import { selectProductById } from "../../redux/slices/productsSlice";
+import { selectProductById } from "../products/productsSlice";
 
 import type { ProductType } from "../../misc/types";
 

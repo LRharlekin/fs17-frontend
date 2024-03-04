@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 
 import TableHeader from "./TableHeader";
-import { SkeletonText, SkeletonCircle } from "../loaders";
+import { SkeletonText, SkeletonCircle } from "../common/loaders";
 
 type TableProps = {
   isLoading?: boolean;

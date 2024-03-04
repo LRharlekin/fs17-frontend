@@ -4,11 +4,11 @@ import BackSpaceIcon from "@mui/icons-material/Backspace";
 import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 
-import Container from "../../components/Container";
-import TabsNav from "../../components/TabsNav";
-import AddProductForm from "../../components/forms/AddProductForm";
-import FormInputProductSearch from "../../components/forms/FormInputProductSearch";
-import DeleteProductForm from "../../components/forms/DeleteProductForm";
+import Container from "../../components/common/Container";
+import TabsNav from "../../components/manage-products/TabsNav";
+import AddProductForm from "../../components/manage-products/AddProductForm";
+import FormInputProductSearch from "../../components/common/forms/FormInputProductSearch";
+import DeleteProductForm from "../../components/manage-products/DeleteProductForm";
 
 const ManageProductsPage = () => {
   const tabs = [

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { ProductType, CategoryType } from "../../misc/types";
+import type { ProductType, CategoryType } from "../misc/types";
 
 const productsApi = createApi({
   // reducerPath = unique key to mount service to in store

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { setCredentials, logout } from "../slices/authSlice";
+import { setCredentials, logout } from "../components/auth/authSlice";
 
 import type {
   BaseQueryFn,
@@ -10,9 +10,8 @@ import type {
   AuthTokenResponse,
   AuthUserSessionResponse,
   UserRegisterType,
-} from "../../misc/types";
-import type { AppState } from "../store";
-import { RemoveFromQueue } from "@mui/icons-material";
+} from "../misc/types";
+import type { AppState } from "../app/store";
 
 /* prepareHeaders signature: */
 // type prepareHeaders = (

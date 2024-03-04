@@ -19,7 +19,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import SelectedProducts from "./SelectedProducts";
+import SelectedProducts from "../common/forms/SelectedProducts";
 
 // type DeleteProductFormFields = ToString<ProductToDeleteType>;
 type DeleteProductFormFields = {

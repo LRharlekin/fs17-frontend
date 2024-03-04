@@ -1,4 +1,4 @@
-import type { UserType } from "../../misc/types";
+import type { UserType } from "../misc/types";
 
 const dummyUsers: Array<UserType> = [
   {

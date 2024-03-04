@@ -13,11 +13,11 @@ import { useAppDispatch, useAppSelector } from "../../hooks";
 import {
   selectCurrentUserEmail,
   selectCurrentUserRole,
-} from "../../redux/slices/authSlice";
+} from "../auth/authSlice";
 
 import USER_MENU_OPTIONS from "../../misc/constants/USER_MENU_OPTIONS";
 import type { UserMenuOptionType } from "../../misc/constants/USER_MENU_OPTIONS";
-import logout from "../../redux/slices/authSlice";
+import logout from "../auth/authSlice";
 
 type UserMenuProps = {
   anchorEl: HTMLElement | null;

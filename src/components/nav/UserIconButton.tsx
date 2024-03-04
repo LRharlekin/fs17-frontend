@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import {
   selectCurrentUserAvatar,
   selectCurrentUserEmail,
-} from "../../redux/slices/authSlice";
+} from "../auth/authSlice";
 import { useAppSelector } from "../../hooks";
 
 import NavToolTip from "./NavToolTip";

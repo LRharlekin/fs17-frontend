@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { setCredentials } from "../../redux/slices/authSlice";
-import { useLoginMutation } from "../../redux/slices/authApiSlice";
+import { setCredentials } from "./authSlice";
+import { useLoginMutation } from "./authApiSlice";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 import {

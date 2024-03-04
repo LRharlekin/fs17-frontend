@@ -6,7 +6,7 @@ import { useAppSelector } from "../../hooks";
 import {
   selectCurrentToken,
   // selectCurrentUserRole,
-} from "../../redux/slices/authSlice";
+} from "./authSlice";
 
 const RequireAuth = ({
   allowedRoles,

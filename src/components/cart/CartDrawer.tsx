@@ -1,5 +1,5 @@
 import { useAppSelector } from "../../hooks";
-import { selectCart } from "../../redux/slices/cartSlice";
+import { selectCart } from "./cartSlice";
 
 import { Box, Divider, List, Stack, SwipeableDrawer } from "@mui/material";
 

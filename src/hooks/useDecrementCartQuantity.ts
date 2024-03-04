@@ -1,5 +1,5 @@
 import { useAppDispatch } from "./useAppDispatch";
-import { decrementCartQuantity } from "../redux/slices/cartSlice";
+import { decrementCartQuantity } from "../components/cart/cartSlice";
 
 const useDecrementCartQuantity = (itemId: number) => {
   const dispatch = useAppDispatch();

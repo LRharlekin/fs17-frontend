@@ -5,7 +5,7 @@ import type {
   UserRegisterType,
   UserType,
 } from "../../misc/types";
-import type { AppState } from "../store";
+import type { AppState } from "../../app/store";
 
 const initialState: UserType = {
   id: null,

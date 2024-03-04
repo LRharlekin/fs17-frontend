@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AppState } from "../store";
+import { AppState } from "../../app/store";
 
 import {
   ProductType,

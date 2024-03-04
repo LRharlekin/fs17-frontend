@@ -3,19 +3,19 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { useAppSelector, useAppDispatch } from "../../hooks";
-import { useGetUserWithSessionQuery } from "../../redux/slices/authApiSlice";
+import { useGetUserWithSessionQuery } from "../../components/auth/authApiSlice";
 
 import {
   selectCurrentUserName,
   // selectCurrentUserEmail,
   // selectCurrentToken,
   setUserSession,
-} from "../../redux/slices/authSlice";
+} from "../../components/auth/authSlice";
 
-import { AppDispatch } from "../../redux/store";
+import { AppDispatch } from "../../app/store";
 
-import Container from "../../components/Container";
-import AccountDataTable from "../../components/tables/AccountTable";
+import Container from "../../components/common/Container";
+import AccountDataTable from "../../components/profile/AccountTable";
 import type { AuthUserSessionResponse } from "../../misc/types";
 
 const ProfilePage = () => {

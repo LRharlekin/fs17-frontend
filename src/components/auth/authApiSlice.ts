@@ -1,7 +1,7 @@
 // Extend the API slice to auth
 import type { AuthUserSessionResponse } from "../../misc/types";
 
-import { authApi } from "../services/authApi";
+import { authApi } from "../../services/authApi";
 
 export const authApiSlice = authApi.injectEndpoints({
   endpoints: (builder) => ({

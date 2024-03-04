@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { useGetAllProductsQuery } from "../../redux/services/productsApi";
-import { setProducts } from "../../redux/slices/productsSlice";
+import { useGetAllProductsQuery } from "../../services/productsApi";
+import { setProducts } from "../../components/products/productsSlice";
 
-import Container from "../../components/Container";
+import Container from "../../components/common/Container";
 import ProductFeed from "../../components/products/ProductFeed";
 
-import type { AppDispatch } from "../../redux/store";
+import type { AppDispatch } from "../../app/store";
 
 const HomePage = () => {
   const dispatch: AppDispatch = useAppDispatch();
