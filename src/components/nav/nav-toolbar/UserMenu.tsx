@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React /* , { useState } */ from "react";
+
+// import { useNavigate } from "react-router-dom";
 
 import {
   Menu,
@@ -8,16 +10,16 @@ import {
   ListItemText,
 } from "@mui/material";
 
-import { useAppDispatch, useAppSelector } from "../../hooks";
+import { useAppSelector } from "../../../hooks";
 
 import {
   selectCurrentUserEmail,
   selectCurrentUserRole,
-} from "../auth/authSlice";
+} from "../../auth/authSelectors";
 
-import USER_MENU_OPTIONS from "../../misc/constants/USER_MENU_OPTIONS";
-import type { UserMenuOptionType } from "../../misc/constants/USER_MENU_OPTIONS";
-import logout from "../auth/authSlice";
+import USER_MENU_OPTIONS from "../../../misc/constants/USER_MENU_OPTIONS";
+import type { UserMenuOptionType } from "../../../misc/constants/USER_MENU_OPTIONS";
+// import logout from "../auth/authSlice";
 
 type UserMenuProps = {
   anchorEl: HTMLElement | null;
@@ -25,38 +27,14 @@ type UserMenuProps = {
   handleUserMenuClick: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
-// const dynamicMenuItems = USER_MENU_OPTIONS.filter((option) => {
-//   if (option.requiresAuth) {
-//     return true;
-//   }
-//   if (option.requiresRole) {
-//     return true;
-//   }
-//   return false;
-// });
-
 let menuOptions: UserMenuOptionType[] = [];
-// if (USER_MENU_OPTIONS.length > 1) {
-//   menuOptions = USER_MENU_OPTIONS.filter((option) => {
-//     if (option.requiresAuth) {
-//       return true;
-//     }
-//     if (option.requiresRole) {
-//       return true;
-//     }
-//     return false;
-//   });
-// }
-menuOptions = USER_MENU_OPTIONS.slice(1);
+menuOptions = USER_MENU_OPTIONS;
 
 const UserMenu = ({
   anchorEl,
   handleCloseUserMenu,
   handleUserMenuClick,
 }: UserMenuProps) => {
-  const isLoggedIn = Boolean(useAppSelector(selectCurrentUserEmail));
-  const userRole = useAppSelector(selectCurrentUserRole);
-
   return (
     <Menu
       sx={{ mt: "45px", display: { xs: "none", md: "block" } }}

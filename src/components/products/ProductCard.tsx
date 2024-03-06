@@ -23,9 +23,6 @@ const ProductCard = ({
   description,
   actions,
 }: ProductCardProps) => {
-  // DELETE LATER
-  // const quantity = 0;
-
   return (
     <Grid item xs={1}>
       <Card>

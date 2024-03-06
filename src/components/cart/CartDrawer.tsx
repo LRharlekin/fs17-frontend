@@ -1,5 +1,5 @@
 import { useAppSelector } from "../../hooks";
-import { selectCart } from "./cartSlice";
+import { selectCart } from "./cartSelectors";
 
 import { Divider, Stack, SwipeableDrawer } from "@mui/material";
 

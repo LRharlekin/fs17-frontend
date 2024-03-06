@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+import { useAppSelector } from "../../hooks";
+
+import { selectCurrentUserEmail } from "../auth/authSelectors";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -14,14 +17,17 @@ import {
   Typography,
 } from "@mui/material";
 
-import { Menu as MenuIcon } from "@mui/icons-material";
+import {
+  Menu as MenuIcon,
+  AccountCircle as UserIcon,
+} from "@mui/icons-material";
 
 import CATEGORIES from "../../misc/constants/CATEGORIES";
 import USER_MENU_OPTIONS from "../../misc/constants/USER_MENU_OPTIONS";
 
 const HamburgerMenu = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-
+  const isLoggedIn = Boolean(useAppSelector(selectCurrentUserEmail));
   const navigate = useNavigate();
 
   const pages = CATEGORIES.map(({ id, name: categoryName }) => {
@@ -29,7 +35,6 @@ const HamburgerMenu = () => {
   });
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    console.log("hamburger menu clicked");
     setAnchorElNav(event.currentTarget);
   };
 
@@ -41,6 +46,32 @@ const HamburgerMenu = () => {
     navigate(event.currentTarget.getAttribute("data-path") as string);
     handleCloseNavMenu();
   };
+
+  const userMenuContent = isLoggedIn ? (
+    USER_MENU_OPTIONS.map(({ id, path, name, icon: IconComponent }) => (
+      <MenuItem
+        key={`user-menu-option-${id}`}
+        onClick={handleMenuItemClick}
+        data-path={path}
+      >
+        <ListItemIcon>
+          <IconComponent />
+        </ListItemIcon>
+        <ListItemText>{name}</ListItemText>
+      </MenuItem>
+    ))
+  ) : (
+    <MenuItem
+      key={`user-menu-option-1`}
+      onClick={handleMenuItemClick}
+      data-path={`/login`}
+    >
+      <ListItemIcon>
+        <UserIcon />
+      </ListItemIcon>
+      <ListItemText>Login</ListItemText>
+    </MenuItem>
+  );
 
   return (
     <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -77,20 +108,7 @@ const HamburgerMenu = () => {
           ))}
         </MenuList>
         <Divider />
-        <MenuList dense>
-          {USER_MENU_OPTIONS.map(({ id, path, name, icon: IconComponent }) => (
-            <MenuItem
-              key={`user-menu-option-${id}`}
-              onClick={handleMenuItemClick}
-              data-path={path}
-            >
-              <ListItemIcon>
-                <IconComponent />
-              </ListItemIcon>
-              <ListItemText>{name}</ListItemText>
-            </MenuItem>
-          ))}
-        </MenuList>
+        <MenuList dense>{userMenuContent}</MenuList>
       </Menu>
     </Box>
   );

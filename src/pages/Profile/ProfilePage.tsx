@@ -2,15 +2,12 @@ import React, { useEffect } from "react";
 
 import { Link } from "react-router-dom";
 
-import { useAppSelector, useAppDispatch } from "../../hooks";
+import { useAppDispatch } from "../../hooks";
 import { useGetUserWithSessionQuery } from "../../components/auth/authApiSlice";
 
-import {
-  selectCurrentUserName,
-  // selectCurrentUserEmail,
-  // selectCurrentToken,
-  setUserSession,
-} from "../../components/auth/authSlice";
+import { selectCurrentUserName } from "../../components/auth/authSelectors";
+
+import { setUserSession } from "../../components/auth/authSlice";
 
 import { AppDispatch } from "../../app/store";
 

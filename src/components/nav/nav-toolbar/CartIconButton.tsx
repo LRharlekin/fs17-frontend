@@ -2,14 +2,14 @@ import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import { useAppSelector } from "../../hooks";
-import { selectCartQuantity } from "../cart/cartSlice";
+import { useAppSelector } from "../../../hooks";
+import { selectCartQuantity } from "../../cart/cartSelectors";
 
 import { Badge, IconButton } from "@mui/material";
 import { ShoppingCartOutlined as EmptyCartIcon } from "@mui/icons-material";
 
 import NavToolTip from "./NavToolTip";
-import CartDrawer from "../cart/CartDrawer";
+import CartDrawer from "../../cart/CartDrawer";
 
 const CartIconButton = () => {
   const navigate = useNavigate();

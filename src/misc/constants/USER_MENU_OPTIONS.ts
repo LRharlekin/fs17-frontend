@@ -19,20 +19,13 @@ export type UserMenuOptionType = {
 const USER_MENU_OPTIONS: UserMenuOptionType[] = [
   {
     id: 1,
-    name: "Login",
-    icon: UserIcon,
-    path: "/login",
-    requiresAuth: false,
-  },
-  {
-    id: 2,
     name: "My Profile",
     icon: UserIcon,
     path: "/profile",
     requiresAuth: true,
   },
   {
-    id: 3,
+    id: 2,
     name: "Manage Products",
     icon: StorefrontIcon,
     path: "/manage-products",
@@ -40,7 +33,7 @@ const USER_MENU_OPTIONS: UserMenuOptionType[] = [
     requiresRole: "admin",
   },
   {
-    id: 4,
+    id: 3,
     name: "Logout",
     icon: LogoutIcon,
     requiresAuth: true,

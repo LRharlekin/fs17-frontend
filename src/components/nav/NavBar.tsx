@@ -5,7 +5,7 @@ import Container from "../common/Container";
 import NavMenu from "./NavMenu";
 import HamburgerMenu from "./HamburgerMenu";
 import NavLogo from "./NavLogo";
-import NavToolBar from "./NavToolBar";
+import NavToolBar from "./nav-toolbar/NavToolBar";
 
 const NavBar = () => {
   const [activeLink, setActiveLink] = useState("home");

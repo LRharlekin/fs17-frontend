@@ -1,11 +1,11 @@
 import { useAppDispatch } from "./useAppDispatch";
-import { incrementCartQuantity } from "../components/cart/cartSlice";
+import { incrementCartQuantityAndSave } from "../components/cart/cartActions";
 
 const useIncrementCartQuantity = (itemId: number) => {
   const dispatch = useAppDispatch();
 
   const increment = () => {
-    dispatch(incrementCartQuantity(itemId));
+    dispatch(incrementCartQuantityAndSave(itemId));
   };
 
   return increment;

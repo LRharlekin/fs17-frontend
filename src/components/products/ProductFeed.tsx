@@ -1,4 +1,4 @@
-import { useAppSelector } from "../../hooks";
+// import { useAppSelector } from "../../hooks";
 import type { ProductType } from "../../misc/types";
 import { useNavigate } from "react-router-dom";
 
@@ -29,7 +29,6 @@ const getActionsComponents = (itemId: number) => {
 
 const ProductFeed = ({ feedData }: ProductFeedProps) => {
   const navigate = useNavigate();
-  // const products = useAppSelector((state) => state.products);
 
   const renderedProducts = feedData.slice(0, 40).map((product: ProductType) => {
     return (

@@ -1,7 +1,7 @@
 import { Toolbar } from "@mui/material";
 
 import UserIconButton from "./UserIconButton";
-import SearchIconButton from "./SearchIconButton";
+import SearchIconButton from "../SearchIconButton";
 import CartIconButton from "./CartIconButton";
 
 const NavToolBar = () => {

@@ -6,7 +6,7 @@ import { useAppSelector } from "../../hooks";
 import {
   selectCurrentToken,
   // selectCurrentUserRole,
-} from "./authSlice";
+} from "./authSelectors";
 
 const RequireAuth = ({
   allowedRoles,

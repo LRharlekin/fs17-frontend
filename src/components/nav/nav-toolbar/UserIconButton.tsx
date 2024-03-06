@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 
-import { Avatar, IconButton } from "@mui/material";
-import { AccountCircle as UserIcon } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
 import {
   selectCurrentUserAvatar,
   selectCurrentUserEmail,
-} from "../auth/authSlice";
-import { useAppSelector } from "../../hooks";
+} from "../../auth/authSelectors";
 
+import { useAppSelector } from "../../../hooks";
+
+import Avatar from "@mui/material/Avatar";
+import { AccountCircle as UserIcon } from "@mui/icons-material";
+
+import StyledBadge from "./StyledBadge";
 import NavToolTip from "./NavToolTip";
 import UserMenu from "./UserMenu";
-import StyledBadge from "./StyledBadge";
 
 const UserIconButton = () => {
   const [anchorElUser, setAnchorElUser] = useState<HTMLElement | null>(null);
@@ -22,7 +25,6 @@ const UserIconButton = () => {
 
   const handleAccountIconClick = (event: React.MouseEvent<HTMLElement>) => {
     if (isLoggedIn) {
-      // if logged in, open user menu
       setAnchorElUser(event.currentTarget);
     } else {
       navigate("/login");
@@ -34,8 +36,7 @@ const UserIconButton = () => {
   };
 
   const handleUserMenuClick = (event: React.MouseEvent<HTMLElement>) => {
-    // if currentTarget has data-path, navigate to that path
-    if (!event.currentTarget.getAttribute("data-path")) {
+    if (event.currentTarget.getAttribute("data-path")) {
       navigate(event.currentTarget.getAttribute("data-path") as string);
     }
     // if currentTarget has data-action, perform that action^
@@ -83,9 +84,8 @@ const UserIconButton = () => {
     }
   };
 
-  const tooltipTitle = isLoggedIn ? "User Settings" : "Login";
-
   const buttonContent = generateButtonContent(isLoggedIn, currentUserAvatar);
+  const tooltipTitle = isLoggedIn ? "User Settings" : "Login";
 
   return (
     <>
