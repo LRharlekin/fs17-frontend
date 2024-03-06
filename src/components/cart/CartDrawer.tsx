@@ -1,11 +1,13 @@
 import { useAppSelector } from "../../hooks";
 import { selectCart } from "./cartSlice";
 
-import { Box, Divider, List, Stack, SwipeableDrawer } from "@mui/material";
+import { Divider, Stack, SwipeableDrawer } from "@mui/material";
 
 import CartHeader from "./CartHeader";
+import CartList from "./CartList";
+import CartEmpty from "./CartEmpty";
+
 import CheckoutButton from "./CheckoutButton";
-import CartListItem from "./CartListItem";
 
 type CartDrawerProps = {
   isCartOpen: boolean;
@@ -19,24 +21,8 @@ const CartDrawer = ({ isCartOpen, toggleFunc }: CartDrawerProps) => {
 
   const cartItems = useAppSelector(selectCart);
 
-  const CartList = (
-    <List sx={{ my: 1 }}>
-      {cartItems.map(({ id, quantity }, index) => {
-        if (index === 0) {
-          return <CartListItem itemId={id} quantity={quantity} />;
-        } else {
-          return (
-            <>
-              <Divider />
-              <CartListItem itemId={id} quantity={quantity} />
-            </>
-          );
-        }
-      })}
-    </List>
-  );
-
-  const content = cartItems.length > 0 ? CartList : "Your Cart is Empty";
+  const content =
+    cartItems.length > 0 ? <CartList cartItems={cartItems} /> : <CartEmpty />;
 
   return (
     <SwipeableDrawer
@@ -47,6 +33,9 @@ const CartDrawer = ({ isCartOpen, toggleFunc }: CartDrawerProps) => {
       open={isCartOpen}
       onOpen={toggleFunc}
       onClose={toggleFunc}
+      ModalProps={{
+        keepMounted: false,
+      }}
     >
       <CartHeader />
       <Divider />
@@ -58,7 +47,7 @@ const CartDrawer = ({ isCartOpen, toggleFunc }: CartDrawerProps) => {
       >
         {content}
       </Stack>
-      <CheckoutButton />
+      <CheckoutButton disabled={cartItems.length === 0} />
     </SwipeableDrawer>
   );
 };

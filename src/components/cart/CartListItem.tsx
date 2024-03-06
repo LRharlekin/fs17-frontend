@@ -8,16 +8,11 @@ import {
 
 import { selectProductById } from "../products/productsSlice";
 
-import type { ProductType } from "../../misc/types";
-
 import {
   Avatar,
   Button,
-  IconButton,
   ListItem,
   ListItemAvatar,
-  // ListItemButton,
-  // ListItemIcon,
   ListItemText,
   Typography,
 } from "@mui/material";
@@ -72,16 +67,19 @@ const CartListItem = ({ itemId, quantity }: CartListItemProps) => {
               color="secondary"
             >
               {quantity === 1 ? (
-                <RemoveIcon color="error" />
+                <RemoveIcon fontSize="small" color="error" />
               ) : (
-                <DecrementIcon />
+                <DecrementIcon fontSize="small" />
               )}
             </Button>
             <Typography
               color="secondary.dark"
+              variant="body2"
+              align="center"
               sx={{
                 lineHeight: "1",
                 margin: "auto",
+                width: "2ch",
               }}
             >
               {quantity}
@@ -92,12 +90,13 @@ const CartListItem = ({ itemId, quantity }: CartListItemProps) => {
               onClick={incrementQuantity}
               color="secondary"
             >
-              <IncrementIcon />
+              <IncrementIcon fontSize="small" />
             </Button>
           </QuantityButtonGroup>
         }
       />
       <ListItemText
+        sx={{ minWidth: "30%" }}
         secondary={
           <React.Fragment>
             <Typography
