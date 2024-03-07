@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { setCredentials } from "./authSlice";
+import { setCredentialsAndSave } from "./authActions";
+// import { setCredentials } from "./authSlice";
 import { useLoginMutation } from "./authApiSlice";
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -17,7 +18,6 @@ import {
 } from "@mui/material";
 
 import type { AuthTokenResponse } from "../../misc/types";
-// import FormInputPassword from "./FormInputPassword";
 
 type LoginFormFields = {
   email: string;
@@ -52,10 +52,6 @@ const LoginForm = () => {
     password,
   }) => {
     try {
-      // Simulate server-side error
-      // throw new Error();
-
-      // POST request using login mutation, will return tokens
       const userData: Awaited<Promise<AuthTokenResponse>> = await login({
         email,
         password,
@@ -63,9 +59,9 @@ const LoginForm = () => {
 
       const { access_token: token, refresh_token: refreshToken } = userData;
 
-      dispatch(setCredentials({ token, refreshToken, email }));
+      dispatch(setCredentialsAndSave({ token, refreshToken, email }));
 
-      reset(); // reset form fields
+      reset();
       navigate("/profile");
     } catch (error) {
       console.error("Login failed. Please try again.");

@@ -1,5 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { setCredentials, logout } from "../components/auth/authSlice";
+import {
+  setCredentialsAndSave,
+  logoutAndSave,
+} from "../components/auth/authActions";
 
 import type {
   BaseQueryFn,
@@ -8,8 +11,8 @@ import type {
 } from "@reduxjs/toolkit/query";
 import type {
   AuthTokenResponse,
-  AuthUserSessionResponse,
-  UserRegisterType,
+  // AuthUserSessionResponse,
+  // UserRegisterType,
 } from "../misc/types";
 import type { AppState } from "../app/store";
 
@@ -31,7 +34,10 @@ const baseQuery = fetchBaseQuery({
   // credentials: "include", // set 'HttpOnly' and 'Secure' on cookies
   // if present, inject auth headers on every request
   prepareHeaders: (headers, { getState }) => {
-    const token = (getState() as AppState).auth.token;
+    let token = (getState() as AppState).auth.token;
+    if (!token) {
+      token = localStorage.getItem("token");
+    }
     if (token) {
       headers.set("Authorization", `Bearer ${token}`);
     }
@@ -54,7 +60,11 @@ const baseQueryWithReauth: BaseQueryFn<
     // try to get a new token
     console.log("Requesting new access with refresh token");
     const refreshResult = await baseQuery(
-      "/auth/refresh-token",
+      {
+        url: "/auth/refresh-token",
+        method: "POST",
+        body: { refreshToken: `${localStorage.getItem("refreshToken")}` },
+      },
       api,
       extraOptions
     );
@@ -69,13 +79,13 @@ const baseQueryWithReauth: BaseQueryFn<
         refreshToken,
       };
       // store the new token
-      api.dispatch(setCredentials({ ...user }));
+      api.dispatch(setCredentialsAndSave({ ...user }));
       // retry the initial query with new access token
       console.log("Retrying original request");
       result = await baseQuery(args, api, extraOptions);
     } else {
       console.log("No new access token received. Logging out.");
-      api.dispatch(logout());
+      api.dispatch(logoutAndSave());
     }
   }
   // Check for 403 = Forbidden (e.g. expired access token)

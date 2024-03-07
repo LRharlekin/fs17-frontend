@@ -1,13 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { useLocalStorage } from "../../hooks";
-
 import type {
   AuthUserSessionResponse,
   UserRegisterType,
   UserType,
 } from "../../misc/types";
-import type { AppState } from "../../app/store";
+
+// const tokenInStorage = localStorage.getItem("token");
+// const tokenFromStorage = tokenInStorage ? JSON.parse(tokenInStorage) : null;
+// const userInStorage = localStorage.getItem("user");
+// const user = userInStorage ? JSON.parse(userInStorage) : null;
 
 const initialState: UserType = {
   id: null,
@@ -44,7 +46,6 @@ const authSlice = createSlice({
     },
     logout: (state) => {
       Object.assign(state, initialState);
-      localStorage.removeItem("persist:root");
     },
   },
 });

@@ -1,4 +1,4 @@
-import { useAppDispatch, useLocalStorage } from "../../hooks";
+import type { AppDispatch } from "../../app/store";
 
 import {
   setCredentials as setCredentialsAction,
@@ -7,23 +7,30 @@ import {
 } from "./authSlice";
 
 import type {
-  AuthTokenResponse,
-  AuthUserSessionResponse,
+  // AuthTokenResponse,
+  // AuthUserSessionResponse,
   UserRegisterType,
 } from "../../misc/types";
 
-import type { AppState } from "../../app/store";
-
-export const setCredentials =
+export const setCredentialsAndSave =
   (credentials: Pick<UserRegisterType, "email" | "token" | "refreshToken">) =>
-  (dispatch: any) => {
-    // Save to local storage
-    useLocalStorage("credentials", credentials);
-    localStorage.setItem("credentials", JSON.stringify(credentials));
+  (dispatch: AppDispatch) => {
+    const { token, refreshToken, email } = credentials;
 
-    // Dispatch the action to update the Redux state
+    localStorage.setItem("token", JSON.stringify(token));
+    localStorage.setItem("refreshToken", JSON.stringify(refreshToken));
+    localStorage.setItem("user", JSON.stringify(email));
+
     dispatch(setCredentialsAction(credentials));
   };
 
-export const logout = logoutAction;
+export const logoutAndSave = () => (dispatch: AppDispatch) => {
+  console.log("Running: Logout and save");
+  localStorage.removeItem("cart");
+  localStorage.removeItem("token");
+  localStorage.removeItem("refreshToken");
+  localStorage.removeItem("user");
+  dispatch(logoutAction());
+};
+
 export const setUserSession = setUserSessionAction;

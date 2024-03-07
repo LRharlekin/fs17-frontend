@@ -8,7 +8,7 @@ import {
   selectCurrentUserEmail,
 } from "../../auth/authSelectors";
 
-import { useAppSelector } from "../../../hooks";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
 
 import Avatar from "@mui/material/Avatar";
 import { AccountCircle as UserIcon } from "@mui/icons-material";
@@ -19,6 +19,8 @@ import UserMenu from "./UserMenu";
 
 const UserIconButton = () => {
   const [anchorElUser, setAnchorElUser] = useState<HTMLElement | null>(null);
+
+  const dispatch = useAppDispatch();
   const isLoggedIn = Boolean(useAppSelector(selectCurrentUserEmail));
   const currentUserAvatar = useAppSelector(selectCurrentUserAvatar);
   const navigate = useNavigate();
@@ -35,14 +37,18 @@ const UserIconButton = () => {
     setAnchorElUser(null);
   };
 
-  const handleUserMenuClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleUserMenuClick = (
+    event: React.MouseEvent<HTMLElement>,
+    action?: () => any
+  ) => {
     if (event.currentTarget.getAttribute("data-path")) {
       navigate(event.currentTarget.getAttribute("data-path") as string);
     }
-    // if currentTarget has data-action, perform that action^
-    // if (event.currentTarget.getAttribute("data-action")) {
-    //   event.currentTarget.getAttribute("data-action")();
-    // }
+
+    if (action) {
+      dispatch(action());
+    }
+
     handleCloseUserMenu();
   };
 

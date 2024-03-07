@@ -1,6 +1,4 @@
-import React /* , { useState } */ from "react";
-
-// import { useNavigate } from "react-router-dom";
+import React from "react";
 
 import {
   Menu,
@@ -10,25 +8,16 @@ import {
   ListItemText,
 } from "@mui/material";
 
-import { useAppSelector } from "../../../hooks";
-
-import {
-  selectCurrentUserEmail,
-  selectCurrentUserRole,
-} from "../../auth/authSelectors";
-
 import USER_MENU_OPTIONS from "../../../misc/constants/USER_MENU_OPTIONS";
-import type { UserMenuOptionType } from "../../../misc/constants/USER_MENU_OPTIONS";
-// import logout from "../auth/authSlice";
 
 type UserMenuProps = {
   anchorEl: HTMLElement | null;
   handleCloseUserMenu: () => void;
-  handleUserMenuClick: (event: React.MouseEvent<HTMLElement>) => void;
+  handleUserMenuClick: (
+    event: React.MouseEvent<HTMLElement>,
+    action?: () => any
+  ) => void;
 };
-
-let menuOptions: UserMenuOptionType[] = [];
-menuOptions = USER_MENU_OPTIONS;
 
 const UserMenu = ({
   anchorEl,
@@ -53,18 +42,20 @@ const UserMenu = ({
       onClose={handleCloseUserMenu}
     >
       <MenuList>
-        {menuOptions.map(({ id, path, name, icon: IconComponent }) => (
-          <MenuItem
-            key={`user-menu-option-${id}`}
-            onClick={handleUserMenuClick}
-            data-path={path}
-          >
-            <ListItemIcon>
-              <IconComponent />
-            </ListItemIcon>
-            <ListItemText>{name}</ListItemText>
-          </MenuItem>
-        ))}
+        {USER_MENU_OPTIONS.map(
+          ({ id, path, name, icon: IconComponent, action }) => (
+            <MenuItem
+              key={`user-menu-option-${id}`}
+              onClick={(e) => handleUserMenuClick(e, action)}
+              data-path={path}
+            >
+              <ListItemIcon>
+                <IconComponent />
+              </ListItemIcon>
+              <ListItemText>{name}</ListItemText>
+            </MenuItem>
+          )
+        )}
       </MenuList>
     </Menu>
   );

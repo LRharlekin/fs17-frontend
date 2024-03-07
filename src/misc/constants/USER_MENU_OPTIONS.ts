@@ -1,5 +1,7 @@
 import React from "react";
 
+import { logoutAndSave } from "../../components/auth/authActions";
+
 import {
   AccountCircle as UserIcon,
   Logout as LogoutIcon,
@@ -11,7 +13,7 @@ export type UserMenuOptionType = {
   name: string;
   icon: React.ComponentType;
   path?: string;
-  action?: () => void;
+  action?: typeof logoutAndSave;
   requiresRole?: string;
   requiresAuth: boolean;
 };
@@ -37,7 +39,7 @@ const USER_MENU_OPTIONS: UserMenuOptionType[] = [
     name: "Logout",
     icon: LogoutIcon,
     requiresAuth: true,
-    // action: // dispatch(logout())
+    action: logoutAndSave,
   },
 ];
 

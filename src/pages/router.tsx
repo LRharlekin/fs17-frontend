@@ -23,10 +23,6 @@ const ROLES: {
 const router = createBrowserRouter([
   {
     path: "/",
-    /* loader() {
-      // always provide user data, if logged in
-      // return { user: fakeAuthProvider.username};
-    }, */
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [

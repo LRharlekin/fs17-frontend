@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { useAppSelector } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 
 import { selectCurrentUserEmail } from "../auth/authSelectors";
 import { useNavigate } from "react-router-dom";
@@ -28,6 +28,7 @@ import USER_MENU_OPTIONS from "../../misc/constants/USER_MENU_OPTIONS";
 const HamburgerMenu = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const isLoggedIn = Boolean(useAppSelector(selectCurrentUserEmail));
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const pages = CATEGORIES.map(({ id, name: categoryName }) => {
@@ -42,16 +43,24 @@ const HamburgerMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleMenuItemClick = (event: React.MouseEvent<HTMLElement>) => {
-    navigate(event.currentTarget.getAttribute("data-path") as string);
+  const handleMenuItemClick = (
+    event: React.MouseEvent<HTMLElement>,
+    action?: () => any
+  ) => {
+    if (event.currentTarget.getAttribute("data-path")) {
+      navigate(event.currentTarget.getAttribute("data-path") as string);
+    }
+    if (action) {
+      dispatch(action());
+    }
     handleCloseNavMenu();
   };
 
   const userMenuContent = isLoggedIn ? (
-    USER_MENU_OPTIONS.map(({ id, path, name, icon: IconComponent }) => (
+    USER_MENU_OPTIONS.map(({ id, path, name, icon: IconComponent, action }) => (
       <MenuItem
         key={`user-menu-option-${id}`}
-        onClick={handleMenuItemClick}
+        onClick={(e) => handleMenuItemClick(e, action)}
         data-path={path}
       >
         <ListItemIcon>

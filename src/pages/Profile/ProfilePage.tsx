@@ -30,30 +30,10 @@ const ProfilePage = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      console.log("fetchedSession", fetchedSession);
+      console.log("Profile page setUserSession");
       dispatch(setUserSession(fetchedSession as AuthUserSessionResponse));
     }
   }, [isSuccess, fetchedSession, dispatch]);
-
-  // const user = {
-  //   name: useAppSelector(selectCurrentUserName),
-  //   email: useAppSelector(selectCurrentUserEmail),
-  //   token: useAppSelector(selectCurrentToken),
-  // };
-
-  // const currentUserName = useAppSelector(selectCurrentUserName);
-
-  // useEffect(() => {
-  //   console.log("ProfilePage useEffect");
-  //   console.log("current user name:", currentUserName);
-  // }, [
-  //   fetchedSession,
-  //   isLoading,
-  //   isSuccess,
-  //   isError,
-  //   fetchUserSessionError,
-  //   currentUserName,
-  // ]);
 
   let welcomeMessage = null;
 
