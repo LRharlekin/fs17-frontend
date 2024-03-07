@@ -18,7 +18,26 @@ export const authApiSlice = authApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    register: builder.mutation({
+      query: (registerCredentials) => ({
+        url: "/users",
+        method: "POST",
+        body: registerCredentials,
+      }),
+    }),
+    getNewAccessToken: builder.mutation({
+      query: (refreshToken) => ({
+        url: "/auth/refresh-token",
+        method: "POST",
+        body: refreshToken,
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation, useGetUserWithSessionQuery } = authApiSlice;
+export const {
+  useLoginMutation,
+  useGetUserWithSessionQuery,
+  useRegisterMutation,
+  useGetNewAccessTokenMutation,
+} = authApiSlice;

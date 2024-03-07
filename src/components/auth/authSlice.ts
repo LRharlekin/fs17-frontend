@@ -6,18 +6,22 @@ import type {
   UserType,
 } from "../../misc/types";
 
-// const tokenInStorage = localStorage.getItem("token");
-// const tokenFromStorage = tokenInStorage ? JSON.parse(tokenInStorage) : null;
-// const userInStorage = localStorage.getItem("user");
-// const user = userInStorage ? JSON.parse(userInStorage) : null;
+const tokenInStorage = localStorage.getItem("token");
+const tokenFromStorage = tokenInStorage ? JSON.parse(tokenInStorage) : null;
+const refreshTokenInStorage = localStorage.getItem("refreshToken");
+const refreshTokenFromStorage = refreshTokenInStorage
+  ? JSON.parse(refreshTokenInStorage)
+  : null;
+const userInStorage = localStorage.getItem("user");
+const user = userInStorage ? JSON.parse(userInStorage) : null;
 
 const initialState: UserType = {
   id: null,
   name: null,
-  email: null,
+  email: user,
   password: null,
-  token: null,
-  refreshToken: null,
+  token: tokenFromStorage,
+  refreshToken: refreshTokenFromStorage,
   avatar: null,
   role: null,
 };
@@ -45,7 +49,14 @@ const authSlice = createSlice({
       state.avatar = avatar;
     },
     logout: (state) => {
-      Object.assign(state, initialState);
+      state.id = null;
+      state.name = null;
+      state.email = null;
+      state.password = null;
+      state.token = null;
+      state.refreshToken = null;
+      state.avatar = null;
+      state.role = null;
     },
   },
 });

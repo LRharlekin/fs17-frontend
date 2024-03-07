@@ -9,8 +9,11 @@ type CartState = {
   cartItems: Array<CartItem>;
 };
 
+const cartInStorage = localStorage.getItem("cart");
+const cartFromStorage = cartInStorage ? JSON.parse(cartInStorage) : [];
+
 const initialState: CartState = {
-  cartItems: [],
+  cartItems: cartFromStorage,
 };
 
 const cartSlice = createSlice({
@@ -40,10 +43,13 @@ const cartSlice = createSlice({
         }
       }
     },
+    emptyCart: (state) => {
+      state.cartItems = [];
+    },
   },
 });
 
-export const { incrementCartQuantity, decrementCartQuantity } =
+export const { incrementCartQuantity, decrementCartQuantity, emptyCart } =
   cartSlice.actions;
 
 export default cartSlice.reducer;

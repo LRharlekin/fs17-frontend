@@ -6,6 +6,8 @@ import {
   setUserSession as setUserSessionAction,
 } from "./authSlice";
 
+import { emptyCart as emptyCartAction } from "../cart/cartSlice";
+
 import type {
   // AuthTokenResponse,
   // AuthUserSessionResponse,
@@ -30,6 +32,7 @@ export const logoutAndSave = () => (dispatch: AppDispatch) => {
   localStorage.removeItem("token");
   localStorage.removeItem("refreshToken");
   localStorage.removeItem("user");
+  dispatch(emptyCartAction());
   dispatch(logoutAction());
 };
 

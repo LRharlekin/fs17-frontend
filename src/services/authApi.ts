@@ -1,4 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
+import type { AppState } from "../app/store";
+
 import {
   setCredentialsAndSave,
   logoutAndSave,
@@ -9,12 +12,12 @@ import type {
   FetchArgs,
   FetchBaseQueryError,
 } from "@reduxjs/toolkit/query";
+
 import type {
   AuthTokenResponse,
   // AuthUserSessionResponse,
   // UserRegisterType,
 } from "../misc/types";
-import type { AppState } from "../app/store";
 
 /* prepareHeaders signature: */
 // type prepareHeaders = (
@@ -58,12 +61,17 @@ const baseQueryWithReauth: BaseQueryFn<
   // Check for 401 = Unauthorized
   if (result.error && result.error.status === 401) {
     // try to get a new token
+    let refreshToken = (api.getState() as AppState).auth.refreshToken;
+    if (!refreshToken) {
+      refreshToken = localStorage.getItem("refreshToken");
+    }
     console.log("Requesting new access with refresh token");
+    console.log("refreshToken", refreshToken);
     const refreshResult = await baseQuery(
       {
         url: "/auth/refresh-token",
         method: "POST",
-        body: { refreshToken: `${localStorage.getItem("refreshToken")}` },
+        body: refreshToken,
       },
       api,
       extraOptions
