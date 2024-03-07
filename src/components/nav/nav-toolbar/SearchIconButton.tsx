@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { IconButton, Tooltip } from "@mui/material";
 
 import SearchIcon from "@mui/icons-material/Search";
-import NavToolTip from "./nav-toolbar/NavToolTip";
+import NavToolTip from "./NavToolTip";
 
 const SearchIconButton = (): ReactElement => {
   const navigate = useNavigate();

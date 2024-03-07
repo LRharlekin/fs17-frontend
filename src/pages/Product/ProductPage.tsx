@@ -19,8 +19,6 @@ import {
 } from "@mui/icons-material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
-// import ProductCard from "../../components/collection/ProductCard";
-// import CardMedia from "../../components/collection/CardMedia";
 import ProductImage from "../../components/product/ProductImage";
 import Container from "../../components/common/Container";
 import QuantityButtonGroup from "../../components/cart/QuantityButtonGroup";
@@ -34,9 +32,6 @@ const ProductPage = () => {
   const quantity = useAppSelector((state: AppState) =>
     selectCartQuantityById(state, id)
   );
-  // const navigate = useNavigate();
-
-  // <CardTitle price={product.price} title={product.title} />
 
   const incrementCartQuantity = useIncrementCartQuantity(id);
   const decrementCartQuantity = useDecrementCartQuantity(id);
@@ -52,7 +47,23 @@ const ProductPage = () => {
           sm: 10,
         }}
       >
-        <ProductImage title={product?.title} imageUrl={product?.images[0]} />
+        <Grid item xs={1} sm={5} md={4}>
+          <Grid container spacing={1} columns={{ xs: 2 }}>
+            <ProductImage
+              title={product?.title}
+              imageUrl={product?.images[0]}
+              colSpan={2}
+            />
+            <ProductImage
+              title={product?.title}
+              imageUrl={product?.images[1]}
+            />
+            <ProductImage
+              title={product?.title}
+              imageUrl={product?.images[2]}
+            />
+          </Grid>
+        </Grid>
         <Grid
           item
           xs={1}
@@ -90,7 +101,6 @@ const ProductPage = () => {
             {formatCurrency(product?.price)}
           </Typography>
 
-          {/* ============== */}
           <QuantityButtonGroup size="medium">
             <Button
               variant="text"
@@ -125,7 +135,6 @@ const ProductPage = () => {
               <IncrementIcon fontSize="medium" />
             </Button>
           </QuantityButtonGroup>
-          {/* ============== */}
 
           <Button
             sx={{
@@ -134,6 +143,7 @@ const ProductPage = () => {
             }}
             size="large"
             variant="contained"
+            onClick={incrementCartQuantity}
             endIcon={<AddShoppingCartIcon />}
           >
             Add to cart

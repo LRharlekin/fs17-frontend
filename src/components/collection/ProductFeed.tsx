@@ -53,11 +53,12 @@ const ProductFeed = ({ feedData }: ProductFeedProps) => {
 
   return (
     <>
-      <Typography variant="h4" component="h2" gutterBottom>
+      {/* <Typography variant="h4" component="h2" gutterBottom>
         Category Heading
-      </Typography>
+      </Typography> */}
       <Grid
         container
+        my={6}
         spacing={2}
         columns={{
           xs: 1,

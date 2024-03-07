@@ -38,8 +38,6 @@ const NavMenu = () => {
                 fontWeight: isActive ? "bold" : "",
                 color: "white",
                 textDecoration: "none",
-                // color: isPending ? "red" : "black",
-                // viewTransitionName: isTransitioning ? "slide" : "",
               };
             }}
           >

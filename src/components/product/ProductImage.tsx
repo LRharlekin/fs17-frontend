@@ -5,11 +5,12 @@ import { Card, CardMedia, Grid } from "@mui/material";
 type ProductImageProps = {
   title?: string;
   imageUrl?: string;
+  colSpan?: number;
 };
 
-const ProductImage = ({ title, imageUrl }: ProductImageProps) => {
+const ProductImage = ({ title, imageUrl, colSpan = 1 }: ProductImageProps) => {
   return (
-    <Grid item xs={1} sm={5} md={4}>
+    <Grid item xs={colSpan}>
       <Card>
         <CardMedia
           sx={{ aspectRatio: 1 }}

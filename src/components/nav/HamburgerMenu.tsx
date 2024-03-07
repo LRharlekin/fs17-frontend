@@ -83,7 +83,7 @@ const HamburgerMenu = () => {
   );
 
   return (
-    <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+    <Box sx={{ flexGrow: 0, display: { xs: "flex", md: "none" } }}>
       <IconButton size="large" onClick={handleOpenNavMenu} color="inherit">
         <MenuIcon />
       </IconButton>
