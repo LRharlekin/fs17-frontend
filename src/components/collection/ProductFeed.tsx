@@ -34,6 +34,7 @@ const ProductFeed = ({ feedData }: ProductFeedProps) => {
     return (
       <ProductCard
         key={`product-card-${product.id}`}
+        itemId={product.id}
         media={
           <CardMedia
             height="140"

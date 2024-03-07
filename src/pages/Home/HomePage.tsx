@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { useGetAllProductsQuery } from "../../services/productsApi";
-import { setProducts } from "../../components/products/productsSlice";
+import { setProducts } from "../../components/collection/productsSlice";
 
 import Container from "../../components/common/Container";
-import ProductFeed from "../../components/products/ProductFeed";
+import ProductFeed from "../../components/collection/ProductFeed";
 
 import type { AppDispatch } from "../../app/store";
 

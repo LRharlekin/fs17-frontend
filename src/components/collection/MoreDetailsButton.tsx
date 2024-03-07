@@ -14,14 +14,12 @@ const MoreDetailsButton = ({ itemId }: MoreDetailsButtonProps) => {
   const handleMoreDetailsClick = (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
-    const itemId = Number(event.currentTarget.getAttribute("data-item-id"));
     navigate(`/product/${itemId}`);
   };
 
   return (
     <Button
       onClick={handleMoreDetailsClick}
-      data-item-id={itemId}
       variant="contained"
       size="small"
       color="primary"

@@ -4,7 +4,7 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 // import reducers
 import authReducer from "../components/auth/authSlice";
 import cartReducer from "../components/cart/cartSlice";
-import productsReducer from "../components/products/productsSlice";
+import productsReducer from "../components/collection/productsSlice";
 
 // import services
 import productsApi from "../services/productsApi";

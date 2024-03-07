@@ -6,7 +6,7 @@ import {
   useDecrementCartQuantity,
 } from "../../hooks";
 
-import { selectProductById } from "../products/productsSlice";
+import { selectProductById } from "../collection/productsSlice";
 
 import {
   Avatar,

@@ -8,7 +8,7 @@ const NavToolBar = () => {
   return (
     <Toolbar component="nav" sx={{ flexGrow: 0 }}>
       <UserIconButton />
-      <SearchIconButton />
+      {/* <SearchIconButton /> */}
       <CartIconButton />
     </Toolbar>
   );

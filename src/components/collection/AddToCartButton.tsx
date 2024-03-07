@@ -14,7 +14,6 @@ const AddToCartButton = ({ itemId }: AddToCartButtonProps) => {
 
   return (
     <Button
-      data-item-id={itemId}
       onClick={incrementCartQuantity}
       variant="outlined"
       size="small"

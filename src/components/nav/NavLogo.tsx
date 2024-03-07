@@ -1,15 +1,24 @@
 import React from "react";
 
-import { Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
+import { Box, Typography } from "@mui/material";
 import { DiamondTwoTone as DiamondIcon } from "@mui/icons-material";
 
 const NavLogo = () => {
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    navigate("/");
+  };
+
   return (
     <>
       <DiamondIcon sx={{ alignSelf: "center", display: "flex", mr: 1 }} />
       <Typography
         variant="h6"
         noWrap
+        onClick={handleLogoClick}
         component="h1"
         sx={{
           mr: 2,

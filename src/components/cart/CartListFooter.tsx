@@ -2,7 +2,7 @@ import React from "react";
 
 import { useAppSelector } from "../../hooks";
 
-import { selectPricesByIds } from "../products/productsSlice";
+import { selectPricesByIds } from "../collection/productsSlice";
 
 import { Box, Typography } from "@mui/material";
 

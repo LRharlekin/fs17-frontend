@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import {
   Card,
   CardActions,
@@ -9,6 +11,7 @@ import {
 } from "@mui/material";
 
 type ProductCardProps = {
+  itemId: number;
   media?: ReactNode;
   title?: ReactNode;
   category?: ReactNode;
@@ -22,11 +25,18 @@ const ProductCard = ({
   category,
   description,
   actions,
+  itemId,
 }: ProductCardProps) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/product/${itemId}`);
+  };
+
   return (
     <Grid item xs={1}>
       <Card>
-        <CardActionArea>
+        <CardActionArea onClick={handleCardClick}>
           {media}
           <CardContent>
             {category}

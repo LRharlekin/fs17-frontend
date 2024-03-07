@@ -52,6 +52,9 @@ const LoginForm = () => {
     password,
   }) => {
     try {
+      /* Simulate server-side error */
+      // throw new Error();
+
       const userData: Awaited<Promise<AuthTokenResponse>> = await login({
         email,
         password,
