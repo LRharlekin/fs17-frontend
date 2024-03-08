@@ -13,7 +13,6 @@ import {
   FormControl,
   FormControlLabel,
   FormHelperText,
-  InputAdornment,
   Stack,
   TextField,
   Typography,
@@ -52,8 +51,8 @@ const DeleteProductForm = () => {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       /* Simulate server-side error */
       throw new Error();
-      console.log("Form submitted");
-      console.log(data);
+      // console.log("Form submitted");
+      // console.log(data);
       setAlertOpen(true);
     } catch (error) {
       setError("root", {
@@ -67,7 +66,7 @@ const DeleteProductForm = () => {
     if (isSubmitSuccessful) {
       reset(undefined, { keepIsSubmitted: true });
     }
-  }, [formState, reset]);
+  }, [formState, reset, isSubmitSuccessful]);
 
   return (
     <form

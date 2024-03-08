@@ -50,6 +50,3 @@ const NavMenu = () => {
 };
 
 export default NavMenu;
-
-// compound component child
-const NavLink = () => {};

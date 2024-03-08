@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useAppDispatch, useAppSelector } from "../../hooks";
+import { useAppDispatch } from "../../hooks";
 import { setCredentialsAndSave } from "./authActions";
 // import { setCredentials } from "./authSlice";
 import { useLoginMutation } from "./authApiSlice";
@@ -28,7 +28,8 @@ const LoginForm = () => {
   const [alertOpen, setAlertOpen] = useState(false);
 
   const navigate = useNavigate();
-  const [login, { isLoading, error: loginError }] = useLoginMutation();
+  const [login] = useLoginMutation();
+  // const [login, { isLoading, error: loginError }] = useLoginMutation();
   const dispatch = useAppDispatch();
 
   const form = useForm<LoginFormFields>({
@@ -79,7 +80,8 @@ const LoginForm = () => {
     if (isSubmitSuccessful) {
       reset(undefined, { keepIsSubmitted: true });
     }
-  }, [formState, reset]);
+  }, [formState, reset, isSubmitSuccessful]);
+  // }, [formState, reset]);
 
   return (
     <form className="loginForm" onSubmit={handleSubmit(onSubmit)} noValidate>

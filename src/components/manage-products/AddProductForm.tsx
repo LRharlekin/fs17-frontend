@@ -70,7 +70,7 @@ const AddProductForm = () => {
     if (isSubmitSuccessful) {
       reset(undefined, { keepIsSubmitted: true });
     }
-  }, [formState, reset]);
+  }, [formState, reset, isSubmitSuccessful]);
 
   return (
     <form

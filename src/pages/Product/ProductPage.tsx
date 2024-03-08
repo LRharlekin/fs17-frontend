@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
 import { AppState } from "../../app/store";
-import { useNavigate, useParams, redirect } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   useAppSelector,
   useIncrementCartQuantity,
@@ -28,7 +27,10 @@ import formatCurrency from "../../utils/formatCurrency";
 const ProductPage = () => {
   const { id: idString } = useParams();
   const id = Number(idString);
-  const { data: product, isSuccess } = useGetProductByIdQuery(id);
+  const {
+    data: product,
+    // isSuccess,
+  } = useGetProductByIdQuery(id);
   const quantity = useAppSelector((state: AppState) =>
     selectCartQuantityById(state, id)
   );

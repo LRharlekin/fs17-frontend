@@ -1,6 +1,5 @@
-import React from "react";
 import { styled } from "@mui/material/styles";
-import { Box, Button, Stack } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 const VisuallyHiddenInput = styled("input")({

@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import { Avatar, Chip, Stack } from "@mui/material";
 
-import TagFacesIcon from "@mui/icons-material/TagFaces";
-
 interface ChipData {
   key: number;
   label: string;

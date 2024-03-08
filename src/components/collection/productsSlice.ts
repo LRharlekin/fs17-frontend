@@ -3,10 +3,10 @@ import { AppState } from "../../app/store";
 
 import {
   ProductType,
-  ProductToAddType,
-  ProductToDeleteType,
-  ProductToUpdateType,
-  ProductToUpdateBodyType,
+  // ProductToAddType,
+  // ProductToDeleteType,
+  // ProductToUpdateType,
+  // ProductToUpdateBodyType,
 } from "../../misc/types";
 
 type InitialState = {

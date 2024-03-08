@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import { useNavigate } from "react-router-dom";
-
 import { useAppSelector } from "../../../hooks";
 import { selectCartQuantity } from "../../cart/cartSelectors";
 
@@ -12,9 +10,8 @@ import NavToolTip from "./NavToolTip";
 import CartDrawer from "../../cart/CartDrawer";
 
 const CartIconButton = () => {
-  const navigate = useNavigate();
   const cartQuantity = useAppSelector(selectCartQuantity);
-  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
 
   const toggleCartDrawer = () => {
     setIsCartOpen(!isCartOpen);

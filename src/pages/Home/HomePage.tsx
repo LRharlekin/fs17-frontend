@@ -10,16 +10,15 @@ import type { AppDispatch } from "../../app/store";
 
 const HomePage = () => {
   const dispatch: AppDispatch = useAppDispatch();
-  const items = useAppSelector((state) => state.products);
 
   const {
     data: fetchedProducts,
     isLoading,
-    isFetching,
+    // isFetching,
     isSuccess,
     isError,
     error,
-    refetch,
+    // refetch,
   } = useGetAllProductsQuery();
 
   useEffect(() => {

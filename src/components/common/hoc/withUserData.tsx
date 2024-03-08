@@ -12,11 +12,10 @@ const withUserData = (WrappedComponent: React.ComponentType) => {
     const userName = useAppSelector(selectCurrentUserName);
     console.log("username is: ", Boolean(userName));
 
-    const {
-      data: fetchedSession,
-      isSuccess,
-      refetch,
-    } = useGetUserWithSessionQuery(undefined, { skip: Boolean(userName) });
+    const { data: fetchedSession, isSuccess } = useGetUserWithSessionQuery(
+      undefined,
+      { skip: Boolean(userName) }
+    );
 
     useEffect(() => {
       if (!userName && isSuccess) {

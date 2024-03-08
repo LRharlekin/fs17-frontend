@@ -1,7 +1,6 @@
 import React, { useState, ReactNode, ReactElement } from "react";
 
 import { Box, Tabs as TabsContainer, Tab as TabItem } from "@mui/material";
-import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
 
 import TabPanel from "./TabPanel";
 

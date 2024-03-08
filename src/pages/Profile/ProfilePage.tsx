@@ -1,11 +1,9 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 import { Link } from "react-router-dom";
 
 import { useAppDispatch } from "../../hooks";
 import { useGetUserWithSessionQuery } from "../../components/auth/authApiSlice";
-
-import { selectCurrentUserName } from "../../components/auth/authSelectors";
 
 import { setUserSession } from "../../components/auth/authSlice";
 
@@ -21,11 +19,11 @@ const ProfilePage = () => {
   const {
     data: fetchedSession,
     isLoading,
-    isFetching,
+    // isFetching,
     isSuccess,
     isError,
-    error: fetchUserSessionError,
-    refetch,
+    // error: fetchUserSessionError,
+    // refetch,
   } = useGetUserWithSessionQuery();
 
   useEffect(() => {

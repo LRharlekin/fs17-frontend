@@ -1,8 +1,6 @@
-// import { useAppSelector } from "../../hooks";
 import type { ProductType } from "../../misc/types";
-import { useNavigate } from "react-router-dom";
 
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 
 import AddToCartButton from "./AddToCartButton";
 import CardMedia from "./CardMedia";
@@ -28,8 +26,6 @@ const getActionsComponents = (itemId: number) => {
 };
 
 const ProductFeed = ({ feedData }: ProductFeedProps) => {
-  const navigate = useNavigate();
-
   const renderedProducts = feedData.slice(0, 40).map((product: ProductType) => {
     return (
       <ProductCard
@@ -46,16 +42,12 @@ const ProductFeed = ({ feedData }: ProductFeedProps) => {
         category={<CategoryChip category={product.category.name} />}
         description={<CardDescription description={product.description} />}
         actions={getActionsComponents(product.id)}
-        // actions={actionsComponentsArray}
       />
     );
   });
 
   return (
     <>
-      {/* <Typography variant="h4" component="h2" gutterBottom>
-        Category Heading
-      </Typography> */}
       <Grid
         container
         my={6}
