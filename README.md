@@ -14,6 +14,8 @@ The project is live and can be experienced at:
 
 This application is a user-friendly, interactive web shop built with React and TypeScript, Redux and RTK for state management, react-hook-forms for form handling, and MUI for styling.
 
+It uses the fake product and user data from the [Platzi Fakestore API](https://api.escuelajs.co/).
+
 When you first land on the site, you'll be greeted with a clean, modern interface that's designed with a light theme by default.
 
 As you explore the application, you'll find various functionalities depending on the specific purpose of the app. These range from browsing the shop's content, interacting with your preferred products in the shopping cart, to signing into your user profile.
@@ -40,6 +42,16 @@ This structure allows for clear separation of public-facing pages, pages that re
 ### State Management
 
 The application uses Redux for state management, with the RTK Query library for asynchronous data fetching.
+
+### Component Reusability
+
+The project makes use of custom hooks for encapsulating and reusing logic across different components.
+
+E.g.,
+
+- The useAppDispatch and useAppSelector hooks are strongly typed custom hooks that provide access to the Redux store's dispatch function and state, respectively.
+
+- The useDecrementCartQuantity, and useIncrementCartQuantity hooks encapsulate specific pieces of logic related to cart quantity management, and are not only hooked up to different UX components, but also the basis for calculating subtotals before checkout, and fetching more detailed product data based on the normalized product IDs in the cartSlice of the Redux store.
 
 ### Authentication
 
