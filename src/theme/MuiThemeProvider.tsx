@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState, ReactNode } from "react";
+import React, { useEffect, useState, ReactNode } from "react";
 
 import {
   createTheme,
@@ -6,6 +6,7 @@ import {
 } from "@mui/material/styles";
 
 import ThemeContext from "./ThemeContext";
+import { useCheckForThemePreference } from "../hooks";
 
 import type { ThemeModes } from "./ThemeContext";
 
@@ -30,13 +31,17 @@ const muiTheme = {
   dark: darkTheme,
 };
 
-const checkLocalStorageForThemePreference = () => {
-  const localTheme = window.localStorage.getItem("theme");
-  return localTheme ? (localTheme as ThemeModes) : null;
-};
-
 const ThemeProvider: React.FC<MuiThemeProviderProps> = ({ children }) => {
+  const { themePreference: userThemePreference, isLoading } =
+    useCheckForThemePreference();
+
   const [theme, setTheme] = useState<ThemeModes>("light");
+
+  useEffect(() => {
+    if (!isLoading) {
+      setTheme(userThemePreference || "light");
+    }
+  }, [userThemePreference, isLoading]);
 
   useEffect(() => {
     window.localStorage.setItem("theme", theme);
