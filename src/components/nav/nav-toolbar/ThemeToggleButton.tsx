@@ -1,12 +1,11 @@
 import { useCallback, useContext, ReactElement } from "react";
 
-import { IconButton } from "@mui/material";
-import type { ThemeModes } from "../../../theme/ThemeContext";
+import ThemeContext, { ThemeModes } from "../../../theme/ThemeContext";
 
+import IconButton from "@mui/material/IconButton";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import LightModeIcon from "@mui/icons-material/LightMode";
 
-import ThemeContext from "../../../theme/ThemeContext";
 import NavToolTip from "./NavToolTip";
 
 const ThemeToggleButton = (): ReactElement => {
@@ -22,18 +21,19 @@ const ThemeToggleButton = (): ReactElement => {
     light: {
       icon: LightModeIcon,
       title: "Switch to Dark Mode",
-      hoverColor: "yellow",
+      hoverColor: "blue",
     },
     dark: {
       icon: DarkModeOutlinedIcon,
       title: "Switch to Light Mode",
-      hoverColor: "blue",
+      hoverColor: "yellow",
     },
   };
 
   const otherTheme = (theme === "light" ? "dark" : "light") as ThemeModes;
 
   const ThemeIcon = themeButtonConfigs[theme].icon;
+  const OtherThemeIcon = themeButtonConfigs[otherTheme].icon;
 
   const handleClick = useCallback(
     () => setTheme(otherTheme),
@@ -44,10 +44,23 @@ const ThemeToggleButton = (): ReactElement => {
     <NavToolTip title={themeButtonConfigs[theme].title}>
       <IconButton
         aria-label={themeButtonConfigs[theme].title}
-        sx={{ mr: 3, color: "inherit" }}
+        sx={{
+          mr: 3,
+          color: "inherit",
+          "&:hover": {
+            color: themeButtonConfigs[theme].hoverColor,
+            "& .theme-icon": {
+              display: "none",
+            },
+            "& .other-theme-icon": {
+              display: "block",
+            },
+          },
+        }}
         onClick={handleClick}
       >
-        <ThemeIcon />
+        <ThemeIcon className="theme-icon" sx={{ display: "block" }} />
+        <OtherThemeIcon className="other-theme-icon" sx={{ display: "none" }} />
       </IconButton>
     </NavToolTip>
   );
