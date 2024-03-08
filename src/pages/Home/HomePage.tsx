@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks";
+import { useAppDispatch } from "../../hooks";
 import { useGetAllProductsQuery } from "../../services/productsApi";
 import { setProducts } from "../../components/collection/productsSlice";
 

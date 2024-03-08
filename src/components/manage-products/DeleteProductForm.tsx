@@ -27,7 +27,7 @@ type DeleteProductFormFields = {
 };
 
 const DeleteProductForm = () => {
-  const [alertOpen, setAlertOpen] = useState(false);
+  const [alertOpen, setAlertOpen] = useState<boolean>(false);
 
   const form = useForm<DeleteProductFormFields>({
     defaultValues: {
@@ -50,7 +50,7 @@ const DeleteProductForm = () => {
       /* Simulate async form submission (POST request) */
       await new Promise((resolve) => setTimeout(resolve, 2000));
       /* Simulate server-side error */
-      throw new Error();
+      // throw new Error();
       // console.log("Form submitted");
       // console.log(data);
       setAlertOpen(true);
