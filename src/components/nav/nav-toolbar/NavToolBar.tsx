@@ -3,12 +3,12 @@ import { Toolbar } from "@mui/material";
 import UserIconButton from "./UserIconButton";
 // import SearchIconButton from "./SearchIconButton";
 import CartIconButton from "./CartIconButton";
-import ColorThemeToggleButton from "./ColorThemeToggleButton";
+import ThemeToggleButton from "./ThemeToggleButton";
 
 const NavToolBar = () => {
   return (
     <Toolbar component="nav" sx={{ flexGrow: 0 }}>
-      <ColorThemeToggleButton />
+      <ThemeToggleButton />
       <UserIconButton />
       {/* <SearchIconButton /> */}
       <CartIconButton />

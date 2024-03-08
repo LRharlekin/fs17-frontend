@@ -7,7 +7,9 @@ type ThemeContextType = {
   setTheme: React.Dispatch<React.SetStateAction<ThemeModes>>;
 };
 
-export const ThemeContext = createContext<ThemeContextType | null>({
+const ThemeContext = createContext<ThemeContextType | null>({
   theme: "dark",
   setTheme: () => {},
 });
+
+export default ThemeContext;
