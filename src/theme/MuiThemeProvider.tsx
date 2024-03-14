@@ -1,4 +1,4 @@
-import React, { useEffect, useState, ReactNode } from "react";
+import React, { useEffect, useState, ReactNode, useMemo } from "react";
 
 import {
   createTheme,
@@ -13,29 +13,24 @@ type MuiThemeProviderProps = {
   children?: ReactNode | ReactNode[];
 };
 
-const lightTheme = createTheme({
-  palette: {
-    mode: "light",
-  },
-});
-
-const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-  },
-});
-
-const muiTheme = {
-  light: lightTheme,
-  dark: darkTheme,
-};
-
 const ThemeProvider: React.FC<MuiThemeProviderProps> = ({ children }) => {
   const storage = typeof window !== "undefined" ? localStorage.theme : "light";
 
   const [storageTheme, setStorageTheme] = useState<ThemeModes>(storage);
 
   const [mode, setMode] = useState<ThemeModes>(storage || "light");
+
+  const muiTheme = useMemo(() => {
+    const selectedTheme = createTheme({
+      palette: {
+        mode: mode,
+      },
+    });
+
+    return {
+      [mode]: selectedTheme,
+    };
+  }, [mode]);
 
   useEffect(() => {
     window.localStorage.setItem("theme", mode);
