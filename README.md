@@ -70,3 +70,11 @@ The getUserWithSession endpoint sends a GET request to the /auth/profile endpoin
 The getNewAccessToken endpoint accepts a refresh token, sends it to the /auth/refresh-token endpoint, and expects a new access token in response. This is used to get a new access token when the current one expires.
 
 The authActions.ts file, which defines several Redux Thunk actions related to authentication. These actions are dispatched in response to user interactions, such as logging in or logging out, and they perform side effects like interacting with the local storage and dispatching other actions.
+
+## Optimization & Performance
+
+In this project, caching and optimization of API calls are handled using Redux Toolkit Query (RTK Query) and redux-persist.
+
+RTK Query automatically caches data from API calls, invalidates these caches, and re-fetches as needed. This reduces the need for manual cache management and helps optimize the number of requests made to the server.
+
+redux-persist is used to persist the Products Slice in the Redux store. This allows the cached API data to survive page reloads, providing a faster user experience. Only the data from the Products API is persisted, keeping the Auth API separate to not impair security.
