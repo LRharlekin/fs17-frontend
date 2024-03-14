@@ -29,11 +29,9 @@ const HomePage = () => {
 
   let content = null;
   if (isLoading) {
-    console.log("isLoading");
     content = <div>Loading...</div>;
   } else if (isError) {
     console.log("isError");
-
     console.log(error);
     content = <div>Error</div>;
   } else if (isSuccess) {
@@ -42,12 +40,7 @@ const HomePage = () => {
     content = <ProductFeed feedData={fetchedProducts} />;
   }
 
-  return (
-    <Container component="main">
-      {/* <h1>Home</h1> */}
-      {content}
-    </Container>
-  );
+  return <Container component="main">{content}</Container>;
 };
 
 export default HomePage;
