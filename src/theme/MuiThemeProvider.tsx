@@ -6,7 +6,6 @@ import {
 } from "@mui/material/styles";
 
 import ThemeContext from "./ThemeContext";
-import { useCheckForThemePreference } from "../hooks";
 
 import type { ThemeModes } from "./ThemeContext";
 
@@ -32,24 +31,20 @@ const muiTheme = {
 };
 
 const ThemeProvider: React.FC<MuiThemeProviderProps> = ({ children }) => {
-  const { themePreference: userThemePreference, isLoading } =
-    useCheckForThemePreference();
+  const storage = typeof window !== "undefined" ? localStorage.theme : "light";
 
-  const [theme, setTheme] = useState<ThemeModes>("light");
+  const [storageTheme, setStorageTheme] = useState<ThemeModes>(storage);
 
-  useEffect(() => {
-    if (!isLoading) {
-      setTheme(userThemePreference || "light");
-    }
-  }, [userThemePreference, isLoading]);
+  const [mode, setMode] = useState<ThemeModes>(storage || "light");
 
   useEffect(() => {
-    window.localStorage.setItem("theme", theme);
-  }, [theme]);
+    window.localStorage.setItem("theme", mode);
+    setStorageTheme(mode);
+  }, [muiTheme, storageTheme, mode]);
 
   return (
-    <MuiThemeProvider theme={muiTheme[theme]}>
-      <ThemeContext.Provider value={{ theme, setTheme }}>
+    <MuiThemeProvider theme={muiTheme[mode]}>
+      <ThemeContext.Provider value={{ mode, setMode }}>
         {children}
       </ThemeContext.Provider>
     </MuiThemeProvider>

@@ -15,7 +15,7 @@ const ThemeToggleButton = (): ReactElement => {
     throw new Error("ThemeToggleButton must be used within a ThemeProvider");
   }
 
-  const { theme, setTheme } = themeContext;
+  const { mode, setMode } = themeContext;
 
   const themeButtonConfigs = {
     light: {
@@ -30,25 +30,26 @@ const ThemeToggleButton = (): ReactElement => {
     },
   };
 
-  const otherTheme = (theme === "light" ? "dark" : "light") as ThemeModes;
+  const otherTheme = (mode === "light" ? "dark" : "light") as ThemeModes;
 
-  const ThemeIcon = themeButtonConfigs[theme].icon;
+  const ThemeIcon = themeButtonConfigs[mode].icon;
   const OtherThemeIcon = themeButtonConfigs[otherTheme].icon;
 
   const handleClick = useCallback(
-    () => setTheme(otherTheme),
-    [setTheme, otherTheme]
+    () => setMode(otherTheme),
+    [setMode, otherTheme]
   );
 
   return (
-    <NavToolTip title={themeButtonConfigs[theme].title}>
+    <NavToolTip title={themeButtonConfigs[mode].title}>
       <IconButton
-        aria-label={themeButtonConfigs[theme].title}
+        aria-label={themeButtonConfigs[mode].title}
         sx={{
           mr: 3,
           color: "inherit",
           "&:hover": {
-            color: themeButtonConfigs[theme].hoverColor,
+            color: themeButtonConfigs[mode].hoverColor,
+
             "& .theme-icon": {
               display: "none",
             },
